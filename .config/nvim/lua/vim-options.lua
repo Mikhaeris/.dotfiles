@@ -17,6 +17,7 @@ vim.cmd([[
   augroup FileTypeTabs
     autocmd!
     autocmd FileType lua setlocal tabstop=2 shiftwidth=2 expandtab
+    autocmd FileType zsh setlocal tabstop=2 shiftwidth=2 expandtab
   augroup END
 ]])
 vim.opt.termguicolors = true
