@@ -66,22 +66,7 @@ man:
 https://manpages.debian.org/unstable/power-profiles-daemon/powerprofilesctl.1.en.html
 ```
 
-### Sound
-
-install
-```
-sudo pacman -S pipewire pipewire-pulse pipewire-alsa pipewire-jack pipewire-jack wireplumber
-```
-activate services
-```
-systemctl --user enable --now pipewire pipewire-pulse wireplumber
-```
-control
-```
-sudo pacman -S pavucontrol easyeffects
-```
-
-### Smal use
+#### Smal use
 
 enable:
 ```
@@ -99,6 +84,27 @@ set profile:
 powerprofilesctl set [profile in command above]
 ```
 
+### Sound
+
+install
+```
+sudo pacman -S pipewire pipewire-pulse pipewire-alsa pipewire-jack pipewire-jack wireplumber
+```
+activate services
+```
+systemctl --user enable --now pipewire pipewire-pulse wireplumber
+```
+control
+```
+sudo pacman -S pavucontrol easyeffects
+```
+
+### tmux
+
+update tpm pligind:
+```
+<leader> I
+```
 
 # All instruments
 
