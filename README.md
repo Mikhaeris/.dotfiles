@@ -141,8 +141,6 @@ to enable keyboard prev stop next button (for music and other content)
 ```
 sudo pacman -S playerctl
 ```
-
-
 ## gtk theme
 ?install:
 ```
@@ -150,40 +148,10 @@ paru -S nwg-look
 ```
 
 ```
-sudo pacman -S papirus-icon-theme
-```
-
-## qt theme
-install:
-```
-sudo pacman -S qt5ct qt6ct
-
-```
-install style:
-```
-yay -S breeze breeze5 breeze-icons breeze-gtk qt6ct-kde qt5ct-kde
-```
-
-## pywalfox
-install:
-```
-paru -S pywalfox
-
-```
-run:
-```
-pywalfox install
-```
-
-# Mutagen theme
-install:
-```
 paru -S matugen-bin
 ```
-for set theme:
-```
-matugen image <whatever_wallpaper_you_want>
-```
+
+
 
 # Bar config
 
@@ -194,6 +162,11 @@ in repo
 
 install:
 ```
-sudo pacman -S wl-clipboard ...
+sudo pacman -S wl-clipboard brillo
 
+```
+
+for use brillo
+```
+sudo usermod -aG video $USER
 ```

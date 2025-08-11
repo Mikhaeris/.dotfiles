@@ -7,11 +7,23 @@
     :halign "end"
     :space-evenly false
     (box
+      :class "tray-item systray-container"
+      :spacing 0
+      :space-evenly false
+      ;(image :class "icon systray-icon" :path "images/tray.svg" :image-height "20")
+      (systray
+        :spacing 10
+        :orientation "h"
+        :space-evenly true
+        :icon-size "20"))
+    (eventbox
+      :onclick "~/.config/eww/my_scripts/nm-tray.sh &"
+      (box
       :class "tray-item wifi"
       :spacing 0
       :space-evenly false
       (image :class "icon wifi-icon" :path wifi-icon :image-height "20")
-      (label :class "text wifi-text" :text wifi-strength))
+      (label :class "text wifi-text" :text wifi-strength)))
     (eventbox
       :onclick "pavucontrol &"
       (box
@@ -20,29 +32,41 @@
       :space-evenly false
       (image :class "icon vol-icon" :path vol-icon :image-height "20")
       (label :class "text vol-text" :text "${vol-num}%")))
-    (box
+    (eventbox
+      :onclick "~/.config/eww/my_scripts/toggle-powerprofile.sh &"
+      (box
       :class "tray-item bat"
       :spacing 0
       :space-evenly false
       (image :class "icon bat-icon" :path bat-icon :image-height "26")
-      (label :class "text bat-text" :text "${bat-num}%"))
+      (label :class "text bat-text" :text "${bat-num}%")))
     (box
       :class "tray-item br"
       :spacing 0
       :space-evenly false
       (image :class "icon br-icon" :path "images/brightness.svg" :image-height "20")
       (label :class "text vol-text" :text "${br}%"))
-    (box
-      :class "tray-item"
-      :spacing 0
-      :space-evenly false
-      (image :class "icon systray-icon" :path "images/tray.svg" :image-height "20")
-      (systray
-        :spacing 10
-        :orientation "h"
-        :space-evenly true
-        :icon-size "20"))
     ))
+
+; popup power profile
+(defwindow powermode-notify
+  :geometry (geometry
+    :width "320px"
+    :height "64px"
+    :anchor "top right"
+    :x "-35px"
+    :y "0px"
+  )
+  :monitor 0
+  :class "powermode-notify"
+  (box
+    :class "powermode-notify-box"
+    :orientation "h"
+    :valign "center"
+    :halign "center"
+    :spacing 8
+    (label :class "powermode-text" :text "${powermode_pretty}")))
+
 
 ; Workspaces
 (defwidget workspaces []
@@ -77,8 +101,8 @@
     :halign "start"
     :space-evenly false
     :spacing 0
-    (time)
-    (date)))
+    (date)
+    (time)))
 
 (defwidget lock []
   (box

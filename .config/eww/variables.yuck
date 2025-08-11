@@ -11,7 +11,7 @@
 (defpoll bat-num :interval "10s" "scripts/battery number")
 
 (defpoll time :interval "1s" "date '+%I:%M%P'")
-(defpoll date :interval "1h" "date '+%A %d %B, %Y'")
+(defpoll date :interval "1h" "date '+%d.%m.%Y'")
 
 (deflisten numworkspaces "scripts/workspaces")
 ; (deflisten numworkspaces "scripts/sway_workspaces")
@@ -22,3 +22,5 @@
 (defvar screenshot-reveal 0)
 (defvar power-option 1)
 (defvar power-reveal 0)
+
+(defvar powermode_pretty "Balanced")

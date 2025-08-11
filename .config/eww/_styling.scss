@@ -7,10 +7,31 @@
 .date {
   color: $foreground;
   padding: 0px 12px;
-  border-left: 2px solid rgba($foreground, 0.1);
+  border-left: none;//2px solid rgba($foreground, 0.1);
 }
 
-.wifi { border: 0px; }
+.systray-container {
+  margin-right: 12px;
+}
+
+.powermode-notify-box {
+  background: rgba(40, 44, 52, 0.95);
+  border-radius: 8px;
+  padding: 10px 16px;
+}
+
+.powermode-text {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.powermode-icon {
+  color: #fff;
+  margin-right: 8px;
+}
+
+//.wifi { border: none; /* 0px;*/ }
 
 .workspaces {
   border-radius: $rad;

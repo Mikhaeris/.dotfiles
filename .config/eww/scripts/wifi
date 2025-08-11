@@ -1,39 +1,103 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
-strength=`iwconfig | grep "Link Quality=" | awk -F'=' '{ print $2 }' | awk -F'/' '{ print $1 }'`
-state=`iwconfig | grep ESSID | awk -F':' '{ print $2 }' | xargs`
-wf=`echo "$strength*100/70" | bc`
+ICON_WIFI_OFF="images/wifi-off.svg"
+ICON_WIFI_LOW="images/wifi-low.svg"
+ICON_WIFI_MED="images/wifi-medium.svg"
+ICON_WIFI_HIGH="images/wifi-high.svg"
 
-icon() {
-  if [[ $wf -eq 0 ]]; then
-    echo "images/wifi-off.svg"
-  elif [[ $wf -le 30 ]]; then
-    echo "images/wifi-low.svg"
-  elif [[ $wf -le 60 ]]; then
-    echo "images/wifi-medium.svg"
-  elif [[ $wf -gt 60 ]]; then
-    echo "images/wifi-high.svg"
-  else
-    echo "images/wifi-off.svg"
-  fi
-}
+ICON_ETH_CONNECTED="images/wifi-high.svg"
+ICON_ETH_DISCONNECTED="images/wifi-none.svg"
 
-percentage() {
-  if [[ $wf -ge 0 ]]; then
-    echo "$wf%"
-  else
-    echo "Disconnected"
-  fi
-}
+NM_STATE=$(nmcli -t -f STATE general 2>/dev/null || echo "unknown")
 
-if [[ $1 == icon ]]; then
-  icon
-elif [[ $1 == percentage ]]; then
-  percentage
-elif [[ $1 == name ]]; then
-  if [[ $state == "off/any" ]]; then
-    echo "Disconnected"
-  else
-    iwconfig wlan0 | grep ESSID | awk -F'"' '{ print $2 }' | xargs
-  fi
+if [[ "$NM_STATE" == "disabled" ]] || [[ "$NM_STATE" == "unknown" ]]; then
+  case $1 in
+    icon) echo $ICON_WIFI_OFF;;
+    percentage) echo "0%";;
+    name) echo "";;
+  esac
+  exit 0
 fi
+
+ETH_DEV=$(nmcli -t -f DEVICE,TYPE,STATE device status 2>/dev/null | awk -F: '$2=="ethernet" { print $1; exit }')
+WIFI_DEV=$(nmcli -t -f DEVICE,TYPE,STATE device status 2>/dev/null | awk -F: '$2=="wifi" { print $1; exit }')
+
+SIGNAL=$(nmcli -t -f ACTIVE,SIGNAL dev wifi 2>/dev/null | awk -F: '$1 == "yes" { print $2; exit }')
+if [[ -z "$SIGNAL" ]]; then
+  SIGNAL=$(nmcli -t -f IN-USE,SIGNAL dev wifi 2>/dev/null | awk -F: '$1 == "*" { print $2; exit }')
+fi
+if [[ -z "$SIGNAL" ]] || ! [[ "$SIGNAL" =~ ^[0-9]+$ ]]; then SIGNAL=0; fi
+(( SIGNAL < 0 )) && SIGNAL=0
+(( SIGNAL > 100 )) && SIGNAL=100
+
+ETH_SPEED=""
+if [[ -n "$ETH_DEV" ]]; then
+  ETH_SPEED=$(nmcli -t -f GENERAL.SPEED device show "$ETH_DEV" 2>/dev/null | awk -F: '{print $2}' | xargs)
+fi
+
+choose_wifi_icon() {
+  if (( SIGNAL == 0 )); then
+    echo $ICON_WIFI_OFF
+  elif (( SIGNAL <= 30 )); then
+    echo $ICON_WIFI_LOW
+  elif (( SIGNAL <= 60 )); then
+    echo $ICON_WIFI_MED
+  else
+    echo $ICON_WIFI_HIGH
+  fi
+}
+
+ETH_CONNECTED=false
+if [[ -n "$ETH_DEV" ]]; then
+  DEV_STATE=$(nmcli -t -f DEVICE,STATE device status 2>/dev/null | awk -F: -v d="$ETH_DEV" '$1==d { print $2; exit }')
+  [[ "$DEV_STATE" == "connected" ]] && ETH_CONNECTED=true
+fi
+
+WIFI_CONNECTED=false
+if [[ -n "$WIFI_DEV" ]]; then
+  DEV_STATE_WIFI=$(nmcli -t -f DEVICE,STATE device status 2>/dev/null | awk -F: -v d="$WIFI_DEV" '$1==d { print $2; exit }')
+  [[ "$DEV_STATE_WIFI" == "connected" ]] && WIFI_CONNECTED=true
+fi
+
+case $1 in
+  icon)
+    if $ETH_CONNECTED; then
+      echo $ICON_ETH_CONNECTED
+    elif $WIFI_CONNECTED; then
+      choose_wifi_icon
+    else
+      echo $ICON_WIFI_OFF
+    fi
+    ;;
+  percentage)
+    if $ETH_CONNECTED; then
+      if [[ -n "$ETH_SPEED" ]]; then
+        echo "$ETH_SPEED"
+      fi
+    elif $WIFI_CONNECTED; then
+      echo "${SIGNAL}%"
+    else
+      echo "0%"
+    fi
+    ;;
+  name)
+    echo ""
+    ;;
+  *)
+    if [[ -z "$1" ]]; then
+      if $ETH_CONNECTED; then
+        echo $ICON_ETH_CONNECTED
+      elif $WIFI_CONNECTED; then
+        choose_wifi_icon
+      else
+        echo $ICON_WIFI_OFF
+      fi
+      exit 0
+    fi
+    echo "Usage: $0 {icon|percentage|name}" >&2
+    exit 2
+    ;;
+esac
+
+exit 0
+
