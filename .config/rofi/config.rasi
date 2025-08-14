@@ -45,7 +45,7 @@ configuration {
     color5: @on-primary-fixed;
     foreground: @on-surface;
     background: @surface-container-low;
-    current-image: url("~/.config/hypr/static/experiments_lain.png");
+    current-image: url("~/Pictures/wallpapers/experiments_lain.png");
 }
 
 // Main //

@@ -28,7 +28,7 @@ export ZSH="$HOME/.oh-my-zsh"
 eval "$(starship init zsh)"
 
 # Uncomment the following line to use case-sensitive completion.
-CASE_SENSITIVE="true"
+# CASE_SENSITIVE="true"
 
 zstyle ':omz:update' mode reminder
 zstyle ':omz:update' frequency 13
@@ -37,7 +37,7 @@ zstyle ':omz:update' frequency 13
 # DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -83,4 +83,4 @@ setopt hist_find_no_dups
 [[ -f ~/.config/yazi/wrapper.sh ]] && source ~/.config/yazi/wrapper.sh
 
 alias vim='nvim'
-alias pkgup="sudo pacman -Suyy --noconfirm && yayy -Su --noconfirm"alias pkgupgrade="sudo pacman -Suyy --noconfirm && yayy -Su --noconfirm"
+alias pkgup="sudo pacman -Syu --noconfirm && paru -Syu --noconfirm"

@@ -6,7 +6,6 @@ command_timeout = 2000
 
 format = """
 $os\
-$username\
 $directory\
 $git_branch\
 $git_commit\
@@ -31,9 +30,9 @@ $fill\
 ${custom.memory_usage}\
 ${custom.battery}\
 ${custom.keyboard_layout}\
-$time\
-$cmd_duration\
 $status\
+$cmd_duration\
+$time\
 $line_break\
 $character\
 """
@@ -47,7 +46,6 @@ color_danger = 'bright-red'
 color_caution = 'bright-yellow'
 
 color_os = '#adc6ff'
-color_username = 'white'
 color_directory = 'yellow'
 color_git = 'cyan'
 color_git_added = 'bright-green'
@@ -72,7 +70,6 @@ color_danger = '#fb4934'
 color_caution = '#d79921'
 
 color_os = '#d65d0e'
-color_username = '#d65d0e'
 color_directory = '#d79921'
 color_git = '#689d6a'
 color_git_added = '#b8bb26'
@@ -96,7 +93,6 @@ color_danger = '#9d0006'
 color_caution = '#d79921'
 
 color_os = '#d65d0e'
-color_username = '#d65d0e'
 color_directory = '#d79921'
 color_git = '#689d6a'
 color_git_added = '#79740e'
@@ -120,12 +116,6 @@ format = '[$symbol]($style)'
 
 [os.symbols]
 Arch = "󰣇"
-
-[username]
-show_always = true
-style_user = "fg:color_username"
-style_root = "bold fg:color_danger"
-format = '[ $user ]($style)'
 
 [directory]
 style = "fg:color_directory"

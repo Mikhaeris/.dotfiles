@@ -6,7 +6,10 @@ return {
       {
         "mason-org/mason-lspconfig.nvim",
         opts = {
-          ensure_installed = { "lua_ls" },
+          ensure_installed = {
+            "lua_ls",
+            "clangd",
+          },
           automatic_installation = true,
         },
       },
@@ -22,7 +25,7 @@ return {
       local capabilities = vim.list_extend({}, vim.lsp.protocol.make_client_capabilities())
       capabilities = vim.list_extend(capabilities, require("cmp_nvim_lsp").default_capabilities())
       vim.lsp.config("*", {
-        capabilities,
+        capabilities = capabilities,
       })
 
       vim.opt.signcolumn = "no"
@@ -34,20 +37,14 @@ return {
             [vim.diagnostic.severity.INFO] = "",
             [vim.diagnostic.severity.HINT] = "",
           },
-          -- linehl = {
-          --   [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
-          --   [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
-          --   [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
-          --   [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
-          -- },
           numhl = {
             [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
             [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
             [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
             [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
           },
-          update_in_insert = true,
         },
+        update_in_insert = true,
       })
     end,
   },

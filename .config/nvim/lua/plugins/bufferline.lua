@@ -26,6 +26,6 @@ return {
 	keys = {
 		{ "<Tab>", "<cmd>BufferLineCycleNext<CR>", mode = "n", silent = true },
 		{ "<S-Tab>", "<cmd>BufferLineCyclePrev<CR>", mode = "n", silent = true },
-		-- { "<leader>bd", "<cmd>bd<CR>", mode = "n", silent = true },
+		-- { "<leader>c", "<cmd>bd<CR>", mode = "n", silent = true },
 	},
 }
