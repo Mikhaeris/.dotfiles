@@ -162,11 +162,6 @@ in repo
 
 install:
 ```
-sudo pacman -S wl-clipboard brillo
+sudo pacman -S wl-clipboard ...
 
-```
-
-for use brillo
-```
-sudo usermod -aG video $USER
 ```
