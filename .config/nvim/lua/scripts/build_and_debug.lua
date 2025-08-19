@@ -19,7 +19,13 @@ local function is_executable(f)
 end
 
 local function find_executable()
-  local patterns = vim.fn.isdirectory("build") == 1 and { "build/*", "*" } or { "*" }
+  local patterns
+
+  if vim.fn.isdirectory("build") == 1 then
+    patterns = { "build/debug/*", "build/*", "*" }
+  else
+    patterns = { "*" }
+  end
 
   for _, pat in ipairs(patterns) do
     for _, f in ipairs(vim.fn.glob(pat, false, true)) do
@@ -28,8 +34,10 @@ local function find_executable()
       end
     end
   end
+
   return nil
 end
+
 
 local function build_project()
   local build_system = detect_build_system()
@@ -43,7 +51,10 @@ local function build_project()
   elseif build_system == "make" then
     cmd = "make"
   else
-    cmd = "g++ -g -o main *.cpp"
+    if vim.fn.isdirectory("build/debug") == 0 then
+      os.execute("mkdir -p build/debug")
+    end
+    cmd = "g++ -g -o build/debug/main *.cpp"
   end
 
   print("Compiling with: " .. build_system)
