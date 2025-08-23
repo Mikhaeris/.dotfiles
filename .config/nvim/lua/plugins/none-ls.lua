@@ -7,17 +7,22 @@ return {
       sources = {
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.formatting.clang_format.with({
-          extra_args = { "--style={BasedOnStyle: Google, IndentWidth: 4, TabWidth: 4, UseTab: Never}" },
+          extra_args = {
+            "--style={BasedOnStyle: LLVM, IndentWidth: 4, TabWidth: 4, UseTab: Never, AccessModifierOffset: -4}",
+          },
         }),
       },
     })
 
-    vim.keymap.set("n", "<leader>gf", function()
-      vim.lsp.buf.format({
-        filter = function(client)
-          return client.name == "null-ls"
-        end,
-      })
-    end)
+    -- lsp format
+    vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
+    -- none-ls format
+    -- vim.keymap.set("n", "<leader>gf", function()
+    --   vim.lsp.buf.format({
+    --     filter = function(client)
+    --       return client.name == "null-ls"
+    --     end,
+    --   })
+    -- end)
   end,
 }

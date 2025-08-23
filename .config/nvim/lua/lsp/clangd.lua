@@ -3,7 +3,8 @@ return {
     'clangd',
     '--clang-tidy',
     '--enable-config',
-    '--fallback-style=Google',
+    '--fallback-style=LLVM',
     '--offset-encoding=utf-8',
   },
 }
+
