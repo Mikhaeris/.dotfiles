@@ -23,3 +23,6 @@ vim.cmd([[
 -- vim.opt.shiftwidth = 4
 -- vim.opt.softtabstop = 4
 -- vim.opt.expandtab = true
+
+-- system clipboard
+vim.opt.clipboard = "unnamedplus"
