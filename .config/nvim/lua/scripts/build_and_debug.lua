@@ -116,4 +116,43 @@ function M.build_and_debug()
   })
 end
 
+function M.build_and_debug_with_args()
+  local ok, expected_name = build_project()
+  if not ok then
+    print("❌ Build error!")
+    return
+  end
+
+  local exe = find_executable_in_build_debug(expected_name)
+  if not exe then
+    print("❌ No executable found in build/debug/")
+    return
+  end
+
+  local input_args = vim.fn.input("Program args: ")
+
+  local function shell_split(input)
+    local cmd = string.format([[bash -c 'set -- %s; printf "%%s\n" "$@"']], input)
+    return vim.fn.systemlist(cmd)
+  end
+
+  local args = {}
+  if input_args ~= "" then
+    args = shell_split(input_args)
+  end
+
+  print("✅ Build completed. Launch: " .. exe ..
+        (#args > 0 and (" with args: " .. table.concat(args, " ")) or ""))
+
+  dap.run({
+    name = "Debug after build (with args)",
+    type = "codelldb",
+    request = "launch",
+    program = exe,
+    cwd = vim.fn.getcwd(),
+    stopOnEntry = false,
+    args = args,
+  })
+end
+
 return M

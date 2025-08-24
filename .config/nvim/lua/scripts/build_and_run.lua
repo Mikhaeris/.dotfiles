@@ -1,4 +1,4 @@
-vim.keymap.set("n", "<F6>", function()
+local function compile_and_run(prompt_for_args)
   vim.cmd("write")
 
   local src = vim.fn.expand("%:p")
@@ -14,12 +14,22 @@ vim.keymap.set("n", "<F6>", function()
     compiler = "g++ -std=c++20 -g -O0"
   end
 
+  local args = ""
+  if prompt_for_args then
+    args = vim.fn.input("Args: ")
+  end
+
+  local run_cmd = vim.fn.shellescape(out_exec)
+  if args ~= "" then
+    run_cmd = run_cmd .. " " .. args
+  end
+
   local zsh_cmd = string.format(
     'mkdir -p build/debug && %s %s -o %s && printf "\\n--- Program output ---\\n\\n" && %s',
     compiler,
     vim.fn.shellescape(src),
     vim.fn.shellescape(out_path),
-    vim.fn.shellescape(out_exec)
+    run_cmd
   )
 
   vim.cmd("rightbelow vsplit")
@@ -33,4 +43,8 @@ vim.keymap.set("n", "<F6>", function()
   vim.fn.termopen({ "zsh", "-lc", zsh_cmd })
 
   vim.cmd("startinsert")
-end, { noremap = true, silent = true })
+end
+
+vim.keymap.set("n", "<F7>", function() compile_and_run(false) end, { noremap = true, silent = true })
+
+vim.keymap.set("n", "<F8>", function() compile_and_run(true) end, { noremap = true, silent = true })

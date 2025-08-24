@@ -7,11 +7,41 @@ return {
     "theHamsta/nvim-dap-virtual-text",
   },
   keys = {
-    { "<Leader>b", function() require("dap").toggle_breakpoint() end, desc = "DAP: Toggle Breakpoint" },
-    { "<F9>",      function() require("dap").continue() end,          desc = "DAP: Continue" },
-    { "<F10>",     function() require("dap").step_over() end,         desc = "DAP: Step Over" },
-    { "<F11>",     function() require("dap").step_into() end,         desc = "DAP: Step Into" },
-    { "<F12>",     function() require("dap").step_out() end,          desc = "DAP: Step Out" },
+    {
+      "<Leader>b",
+      function()
+        require("dap").toggle_breakpoint()
+      end,
+      desc = "DAP: Toggle Breakpoint",
+    },
+    {
+      "<F9>",
+      function()
+        require("dap").continue()
+      end,
+      desc = "DAP: Continue",
+    },
+    {
+      "<F10>",
+      function()
+        require("dap").step_over()
+      end,
+      desc = "DAP: Step Over",
+    },
+    {
+      "<F11>",
+      function()
+        require("dap").step_into()
+      end,
+      desc = "DAP: Step Into",
+    },
+    {
+      "<F12>",
+      function()
+        require("dap").step_out()
+      end,
+      desc = "DAP: Step Out",
+    },
   },
   config = function()
     local dap = require("dap")
@@ -20,18 +50,18 @@ return {
       layouts = {
         {
           elements = {
-            { id = "threads", size = 0.1 },
-            { id = "watches", size = 0.2 },
-            { id = "stacks", size = 0.2 },
+            { id = "threads",     size = 0.1 },
+            { id = "watches",     size = 0.2 },
+            { id = "stacks",      size = 0.2 },
             { id = "breakpoints", size = 0.1 },
-            { id = "scopes", size = 0.5 },
+            { id = "scopes",      size = 0.5 },
           },
           size = 40,
           position = "left",
         },
         {
           elements = {
-            { id = "repl", size = 0.6 },
+            { id = "repl",    size = 0.6 },
             { id = "console", size = 0.4 },
           },
           size = 12,
@@ -45,7 +75,7 @@ return {
       commented = false,
       highlight_changed_variables = true,
       highlight_new_as_changed = true,
-      virt_text_pos = 'eol',
+      virt_text_pos = "eol",
     })
 
     vim.fn.sign_define("DapBreakpoint", { numhl = "DapBreakpointNum" })
@@ -71,6 +101,8 @@ return {
 
     require("dap.codelldb")
 
-    vim.keymap.set("n", "<F5>", require("scripts.build_and_debug").build_and_debug, {desc = "Build and Debug" })
+    vim.keymap.set("n", "<F5>", require("scripts.build_and_debug").build_and_debug, { desc = "Build and Debug" })
+
+    vim.keymap.set("n", "<F6>", require("scripts.build_and_debug").build_and_debug_with_args, { desc = "Build and Debug with args" })
   end,
 }
