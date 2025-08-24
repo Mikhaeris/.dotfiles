@@ -69,7 +69,7 @@ return {
       dapui.close()
     end
 
-    require("dap.cpp")
+    require("dap.codelldb")
 
     vim.keymap.set("n", "<F5>", require("scripts.build_and_debug").build_and_debug, {desc = "Build and Debug" })
   end,
