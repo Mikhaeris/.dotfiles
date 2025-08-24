@@ -19,27 +19,29 @@
     (eventbox
       :onclick "~/.config/eww/my_scripts/nm-tray.sh &"
       (box
-      :class "tray-item wifi"
-      :spacing 0
-      :space-evenly false
-      (image :class "icon wifi-icon" :path wifi-icon :image-height "20")
-      (label :class "text wifi-text" :text wifi-strength)))
+      	:class "tray-item wifi"
+      	:spacing 0
+      	:space-evenly false
+      	(image :class "icon wifi-icon" :path wifi-icon :image-height "20")
+      	(label :class "text wifi-text" :text wifi-strength)))
     (eventbox
       :onclick "pavucontrol &"
       (box
-      :class "tray-item vol"
-      :spacing 0
-      :space-evenly false
-      (image :class "icon vol-icon" :path vol-icon :image-height "20")
-      (label :class "text vol-text" :text "${vol-num}%")))
+      	:class "tray-item vol"
+      	:spacing 0
+      	:space-evenly false
+      	(image :class "icon vol-icon" :path vol-icon :image-height "20")
+      	(label :class "text vol-text" :text "${vol-num}%")))
     (eventbox
       :onclick "~/.config/eww/my_scripts/toggle-powerprofile.sh &"
       (box
-      :class "tray-item bat"
-      :spacing 0
-      :space-evenly false
-      (image :class "icon bat-icon" :path bat-icon :image-height "26")
-      (label :class "text bat-text" :text "${bat-num}%")))
+      	:class "tray-item bat"
+      	:spacing 0
+      	:space-evenly false
+      	(image :class "icon bat-icon" :path bat-icon :image-height "26")
+      	(label :class "text bat-text" :text "${bat-num}%")
+      )
+    )
     (box
       :class "tray-item br"
       :spacing 0
@@ -86,14 +88,14 @@
     (image :class "icon clock-icon" :path "images/clock.svg" :image-width "20" :image-height "20")
     (label :class "text" :text time)))
 
-(defwidget date []
-  (box
-    :class "date"
-    :halign "start" 
-    :spacing 0
-    :space-evenly false
-    (image :class "icon date-icon" :path "images/calendar.svg" :image-width "20" :image-height "20")
-    (label :class "text" :text date)))
+;(defwidget date []
+;  (box
+;    :class "date"
+;    :halign "start" 
+;    :spacing 0
+;    :space-evenly false
+;    (image :class "icon date-icon" :path "images/calendar.svg" :image-width "20" :image-height "20")
+;    (label :class "text" :text date)))
 
 (defwidget left []
   (box
@@ -101,7 +103,7 @@
     :halign "start"
     :space-evenly false
     :spacing 0
-    (date)
+    ;(date)
     (time)))
 
 (defwidget lock []
