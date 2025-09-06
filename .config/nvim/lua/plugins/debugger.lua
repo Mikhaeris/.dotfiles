@@ -101,8 +101,11 @@ return {
 
     require("dap.codelldb")
 
-    vim.keymap.set("n", "<F5>", require("scripts.build_and_debug").build_and_debug, { desc = "Build and Debug" })
+    local launch = require('scripts.code_runner.main')
+    vim.keymap.set('n', '<F5>', function() launch.run_debug() end, {silent=true})
+    vim.keymap.set('n', '<F6>', function() launch.run_debug_with_args() end, {silent=true})
 
-    vim.keymap.set("n", "<F6>", require("scripts.build_and_debug").build_and_debug_with_args, { desc = "Build and Debug with args" })
+    vim.keymap.set("n", "<F7>", function() launch.run_release() end, { noremap = true, silent = true })
+    vim.keymap.set("n", "<F8>", function() launch.run_release_with_args() end, { noremap = true, silent = true })
   end,
 }
