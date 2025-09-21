@@ -61,11 +61,9 @@ end
 
 -- REALESE
 local function _run_release(args)
-  vim.cmd("write")
-
   local out_exec = find_executable("build/release")
   if not out_exec then
-    vim.notify("Не найден исполняемый файл в build/release", vim.log.levels.ERROR)
+    print("❌ No executable found in build/release/")
     return
   end
 

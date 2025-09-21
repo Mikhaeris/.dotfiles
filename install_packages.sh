@@ -11,7 +11,6 @@ packages=(
   efibootmgr
   fastfetch
   fd
-  firefox
   fzf
   gdb
   git
@@ -84,6 +83,7 @@ packages=(
   yazi
   zoxide
   zsh
+  librewolf
 )
 
 to_pacman=()

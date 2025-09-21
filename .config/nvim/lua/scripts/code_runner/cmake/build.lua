@@ -49,7 +49,7 @@ function M.configure_and_build(build_dir, build_type, on_finish)
 
     local build_cmd = {"cmake", "--build", build_dir, "--config", build_type, "--", "-j"}
     run_job(build_cmd, vim.fn.getcwd(), function(b_code, b_lines)
-      open_qf_if_errors(b_code, b_lines, "CMake Build: " .. build_type)
+      -- open_qf_if_errors(b_code, b_lines, "CMake Build: " .. build_type)
       if on_finish then
           on_finish(b_code)
       end
