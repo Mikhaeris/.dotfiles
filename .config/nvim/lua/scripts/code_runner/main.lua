@@ -3,8 +3,11 @@ local M = {}
 local cmake_build = require('scripts.code_runner.cmake.build')
 local cmake_run = require('scripts.code_runner.cmake.run')
 
-local native_build = require('scripts.code_runner.native_c.build')
-local native_run = require('scripts.code_runner.native_c.run')
+local c_cpp_build = require('scripts.code_runner.c_cpp.build')
+local c_cpp_run = require('scripts.code_runner.c_cpp.run')
+
+local pascal_build = require('scripts.code_runner.pascal.build')
+local pascal_run = require('scripts.code_runner.pascal.run')
 
 local function file_exists(name)
     local f = io.open(name, "r")
@@ -12,45 +15,71 @@ local function file_exists(name)
     return false
 end
 
-local function has_c_or_cpp_files()
-    local p = io.popen("ls *.c *.cpp 2>/dev/null")
-    local result = p:read("*a")
-    p:close()
-    return result ~= ""
+local function detect_source_files()
+    local languages = {
+        c = "*.c",
+        cpp = "*.cpp",
+        pascal = "*.pas"
+    }
+
+    for lang, pattern in pairs(languages) do
+        local p = io.popen("ls " .. pattern .. " 2>/dev/null")
+        local result = p:read("*a")
+        p:close()
+        if result ~= "" then
+            return lang
+        end
+    end
+    return nil
 end
 
 local function detect_build_system()
     if file_exists("CMakeLists.txt") then
-        return "cmake"
-    elseif has_c_or_cpp_files() then
-        return "native"
-    else
-        error("Cannot detect build system: no CMakeLists.txt or C/C++ source files found")
+        return {system = "cmake"}
     end
+
+    local lang = detect_source_files()
+    if lang then
+        return {system = "native", lang = lang}
+    end
+
+    error("Cannot detect build system: no CMakeLists.txt or source files found")
 end
 
+
 local function run_project(build_system, config, with_args)
-    build_system = build_system or detect_build_system()
+    build_info = build_info or detect_build_system()
     local build_dir = "build/" .. string.lower(config)
     local build_func
     local run_func
 
-    if build_system == "cmake" then
+    if build_info.system == "cmake" then
         build_func = cmake_build.configure_and_build
         if config == "Debug" then
             run_func = with_args and cmake_run.run_debug_with_args or cmake_run.run_debug
         else
             run_func = with_args and cmake_run.run_release_with_args or cmake_run.run_release
         end
-    elseif build_system == "native" then
-        build_func = native_build.build_project
-        if config == "Debug" then
-            run_func = with_args and native_run.run_debug_with_args or native_run.run_debug
+    elseif build_info.system == "native" then
+        if build_info.lang == "c" or build_info.lang == "cpp" then
+            build_func = c_cpp_build.build_project
+            if config == "Debug" then
+                run_func = with_args and c_cpp_run.run_debug_with_args or c_cpp_run.run_debug
+            else
+                run_func = with_args and c_cpp_run.run_release_with_args or c_cpp_run.run_release
+            end
+        elseif build_info.lang == "pascal" then
+            build_func = pascal_build.build_project
+            if config == "Debug" then
+                run_func = with_args and pascal_run.run_debug_with_args or pascal_run.run_debug
+            else
+                run_func = with_args and pascal_run.run_release_with_args or pascal_run.run_release
+            end
         else
-            run_func = with_args and native_run.run_release_with_args or native_run.run_release
+            error("Unsupported native language: " .. tostring(build_info.lang))
         end
     else
-        error("Unsupported build system: " .. tostring(build_system))
+        error("Unsupported build system: " .. tostring(build_info.system))
     end
 
     build_func(build_dir, config, function(result)

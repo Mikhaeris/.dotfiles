@@ -1,4 +1,3 @@
-
 local M = {}
 
 local function run_job(cmd, cwd, on_complete)
@@ -49,7 +48,7 @@ local function gather_sources(src_dir)
     while true do
       local name, typ = vim.loop.fs_scandir_next(handle)
       if not name then break end
-      if typ == "file" and name:match("%.c$") then
+      if typ == "file" and name:match("%.pas$") then
         table.insert(files, src_dir .. "/" .. name)
       end
     end
@@ -57,47 +56,42 @@ local function gather_sources(src_dir)
   return files
 end
 
-
-function M.build_project(build_type, on_finish)
+function M.build_project(build_dir, build_type, on_finish)
   build_type = build_type or "Debug"
-  local output_dir = "build/" .. string.lower(build_type)
-  vim.fn.mkdir(output_dir, "p")
-  local output = output_dir .. "/main"
+  build_dir = build_dir or ("build/" .. build_type:lower())
+  vim.fn.mkdir(build_dir, "p")
+  local output = build_dir .. "/main"
 
   local src_dir = "./"
   local sources = gather_sources(src_dir)
   if #sources == 0 then
-    print("No .c files found in " .. src_dir)
+    print("No .pas files found in " .. src_dir)
     if on_finish then on_finish(1) end
     return
   end
 
-  local cflags = {"-Wall", "-Wextra"}
+  local fpc_flags = {}
   if build_type == "Debug" then
-    table.insert(cflags, "-g")
+    table.insert(fpc_flags, "-g")
   elseif build_type == "Release" then
-    table.insert(cflags, "-O2")
+    table.insert(fpc_flags, "-O2")
   end
 
-  local cmd = {"gcc"}
-  for _, f in ipairs(cflags) do table.insert(cmd, f) end
+  local cmd = {"fpc"}
+  for _, f in ipairs(fpc_flags) do table.insert(cmd, f) end
   for _, f in ipairs(sources) do table.insert(cmd, vim.fn.fnamemodify(f, ":p")) end
-  table.insert(cmd, "-o")
-  table.insert(cmd, vim.fn.fnamemodify(output, ":p"))
+  table.insert(cmd, "-o" .. vim.fn.fnamemodify(output, ":p"))
 
   print("Building " .. build_type .. " -> " .. output)
   run_job(cmd, src_dir, function(code, lines)
-    print(vim.inspect(lines))  -- для диагностики ошибок
-    open_qf_if_errors(code, lines, "GCC Build: " .. build_type)
+    open_qf_if_errors(code, lines, "FPC Build: " .. build_type)
     if code == 0 then
-      print("Build succeeded: " .. output)
+      print("✅ Build succeeded: " .. output)
     else
-      print("Build failed!")
+      print("❌ Build failed!")
     end
     if on_finish then on_finish(code) end
   end)
 end
 
-
 return M
-

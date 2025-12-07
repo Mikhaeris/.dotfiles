@@ -13,6 +13,7 @@ return {
         "lua",
         "c",
         "cpp",
+        "pascal",
       },
       highlight = {
         enable = true,
