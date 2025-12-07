@@ -8,6 +8,13 @@ return {
   },
   keys = {
     {
+      "<F1>",
+      function()
+        require("dap").terminate();
+      end,
+      desc = "DAP: terminate terminal"
+    },
+    {
       "<Leader>b",
       function()
         require("dap").toggle_breakpoint()

@@ -115,7 +115,7 @@ style = "fg:color_os"
 format = '[$symbol]($style)'
 
 [os.symbols]
-Arch = "󰣇"
+Arch = "󰣇 "
 
 [directory]
 style = "fg:color_directory"
