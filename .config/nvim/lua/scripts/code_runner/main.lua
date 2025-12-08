@@ -3,11 +3,11 @@ local M = {}
 local cmake_build = require('scripts.code_runner.cmake.build')
 local cmake_run = require('scripts.code_runner.cmake.run')
 
-local c_cpp_build = require('scripts.code_runner.c_cpp.build')
-local c_cpp_run = require('scripts.code_runner.c_cpp.run')
+local c_cpp_build = require('scripts.code_runner.C.build')
+local c_cpp_run = require('scripts.code_runner.C.run')
 
-local pascal_build = require('scripts.code_runner.pascal.build')
-local pascal_run = require('scripts.code_runner.pascal.run')
+local pascal_build = require('scripts.code_runner.Pascal.build')
+local pascal_run = require('scripts.code_runner.Pascal.run')
 
 local function file_exists(name)
     local f = io.open(name, "r")
