@@ -16,6 +16,8 @@ packages=(
   git
   grim
   grub
+  gnome-themes-extra
+  gtk2
   gtk-layer-shell
   hyprland
   hyprlock
@@ -83,7 +85,6 @@ packages=(
   yazi
   zoxide
   zsh
-  librewolf
 )
 
 to_pacman=()
