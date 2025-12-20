@@ -16,6 +16,7 @@ vim.cmd([[
     autocmd FileType zsh setlocal tabstop=2 shiftwidth=2 expandtab
     autocmd FileType c   setlocal tabstop=4 shiftwidth=4 expandtab
     autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 expandtab
+    autocmd FileType pascal setlocal tabstop=4 shiftwidth=4 expandtab
   augroup END
 ]])
 
