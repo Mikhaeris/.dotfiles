@@ -85,4 +85,4 @@ setopt hist_find_no_dups
 [[ -f ~/.config/yazi/wrapper.sh ]] && source ~/.config/yazi/wrapper.sh
 
 alias vim='nvim'
-alias pkgup="sudo pacman -Syu --noconfirm && yay -Syu --noconfirm"
+alias pkgup="sudo pacman -Syu --noconfirm && paru -Syu --noconfirm"
