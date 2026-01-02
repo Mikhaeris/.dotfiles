@@ -25,6 +25,14 @@ border_style  = { fg = "{{colors.surface_tint.default.hex}}" }
 # : ]]]
 
 
+# : Indicator [[[
+
+[indicator]
+padding = { open = "█", close = "█" }
+
+# : ]]]
+
+
 # : Tabs [[[
 
 [tabs]
@@ -52,13 +60,8 @@ unset_alt   = { bg = "{{colors.surface_variant.default.hex}}", fg = "{{colors.on
 # : Status [[[
 
 [status]
-sep_left  = { open = "", close = "" }
-sep_right = { open = "", close = "" }
-
-# Progress
-progress_label  = { bold = true }
-progress_normal = { fg = "{{colors.primary.default.hex}}", bg = "{{colors.surface_bright.default.hex}}" }
-progress_error  = { fg = "{{colors.error.default.hex}}", bg = "{{colors.surface_bright.default.hex}}" }
+sep_left  = { open = "🭁", close = "🭠" }
+sep_right = { open = "🭁", close = "🭠" }
 
 # Permissions
 #perm_type  = { fg = "{{colors.secondary.default.hex | auto_lightness: 30.0}}" }
@@ -66,6 +69,35 @@ progress_error  = { fg = "{{colors.error.default.hex}}", bg = "{{colors.surface_
 #perm_exec  = { fg = "{{colors.error.default.hex | auto_lightness: 30.0}}" }
 #perm_read  = { fg = "{{colors.tertiary_fixed.default.hex | auto_lightness: 30.0}}" }
 #perm_sep   = { fg = "{{colors.primary_fixed.default.hex | auto_lightness: 30.0}}" }
+
+# Progress
+progress_label  = { bold = true }
+progress_normal = { fg = "{{colors.primary.default.hex}}", bg = "{{colors.surface_bright.default.hex}}" }
+progress_error  = { fg = "{{colors.error.default.hex}}", bg = "{{colors.surface_bright.default.hex}}" }
+
+# : ]]]
+
+
+# : Which [[[
+
+[which]
+cols      = 3
+mask      = { bg = "{{colors.surface_bright.default.hex}}" }
+cand      = { fg = "{{colors.primary.default.hex}}" }
+rest      = { fg = "{{colors.on_primary.default.hex}}" }
+desc      = { fg = "{{colors.on_surface.default.hex}}" }
+separator = " ▶ "
+separator_style = { fg = "{{colors.on_surface.default.hex}}" }
+
+# : ]]]
+
+
+# : Notification [[[
+
+[notify]
+title_info  = { fg = "{{colors.tertiary.default.hex}}" }
+title_warn  = { fg = "{{colors.primary.default.hex}}" }
+title_error = { fg = "{{colors.error.default.hex}}" }
 
 # : ]]]
 
@@ -107,20 +139,6 @@ hovered = { fg = "{{colors.tertiary_fixed.default.hex}}", underline = true }
 # : ]]]
 
 
-# : Which [[[
-
-[which]
-cols      = 3
-mask      = { bg = "{{colors.surface_bright.default.hex}}" }
-cand      = { fg = "{{colors.primary.default.hex}}" }
-rest      = { fg = "{{colors.on_primary.default.hex}}" }
-desc      = { fg = "{{colors.on_surface.default.hex}}" }
-separator = " ▶ "
-separator_style = { fg = "{{colors.on_surface.default.hex}}" }
-
-# : ]]]
-
-
 # : Help [[[
 
 [help]
@@ -129,17 +147,6 @@ run    = { fg = "{{colors.on_surface.default.hex}}" }
 footer = { fg = "{{colors.on_secondary.default.hex}}", bg = "{{colors.secondary.default.hex}}" }
 
 # : ]]]
-
-
-# : Notification [[[
-
-[notify]
-title_info  = { fg = "{{colors.tertiary.default.hex}}" }
-title_warn  = { fg = "{{colors.primary.default.hex}}" }
-title_error = { fg = "{{colors.error.default.hex}}" }
-
-# : ]]]
-
 
 # : Filetype [[[
 
