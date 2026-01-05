@@ -280,7 +280,7 @@ disabled = false
 
 [time]
 disabled = false
-time_format = "%R"
+time_format = "%I:%M:%S"
 style = "fg:color_time"
 format = '( [󰔛 $time]($style) )'
 
