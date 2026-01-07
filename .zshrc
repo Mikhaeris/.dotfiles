@@ -23,8 +23,6 @@
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-export DOTNET_ROOT=$HOME/.dotnet
-export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 
 # ZSH_THEME="robbyrussell"
 eval "$(starship init zsh)"
