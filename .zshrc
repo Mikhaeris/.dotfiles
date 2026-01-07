@@ -50,7 +50,7 @@ zstyle ':omz:update' frequency 13
 
 plugins=(
   git
-  sudo
+  #sudo
   web-search
   archlinux
   copyfile
@@ -86,3 +86,6 @@ setopt hist_find_no_dups
 
 alias vim='nvim'
 alias pkgup="sudo pacman -Syu --noconfirm && paru -Syu --noconfirm"
+
+# vi-mode
+bindkey -v
