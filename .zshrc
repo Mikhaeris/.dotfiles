@@ -59,6 +59,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+source <(fzf --zsh)
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -82,7 +83,7 @@ setopt hist_find_no_dups
 # Source yazi wrapper if exists
 [[ -f ~/.config/yazi/wrapper.sh ]] && source ~/.config/yazi/wrapper.sh
 
-alias vim='nvim'
+# alias vim='nvim'
 alias pkgup="sudo pacman -Syu --noconfirm && paru -Syu --noconfirm"
 
 # vi-mode
