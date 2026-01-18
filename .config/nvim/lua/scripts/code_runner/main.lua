@@ -1,13 +1,16 @@
 local M = {}
 
 local cmake_build = require('scripts.code_runner.cmake.build')
-local cmake_run = require('scripts.code_runner.cmake.run')
+local cmake_run   = require('scripts.code_runner.cmake.run')
 
 local c_cpp_build = require('scripts.code_runner.C.build')
-local c_cpp_run = require('scripts.code_runner.C.run')
+local c_cpp_run   = require('scripts.code_runner.C.run')
 
 local pascal_build = require('scripts.code_runner.Pascal.build')
-local pascal_run = require('scripts.code_runner.Pascal.run')
+local pascal_run   = require('scripts.code_runner.Pascal.run')
+
+local asm_build = require('scripts.code_runner.Assembler.build')
+local asm_run   = require('scripts.code_runner.Assembler.run')
 
 local function file_exists(name)
     local f = io.open(name, "r")
@@ -17,9 +20,10 @@ end
 
 local function detect_source_files()
     local languages = {
-        c = "*.c",
-        cpp = "*.cpp",
-        pascal = "*.pas"
+        c         = "*.c",
+        cpp       = "*.cpp",
+        pascal    = "*.pas",
+        assembler = "*.asm"
     }
 
     for lang, pattern in pairs(languages) do
@@ -74,6 +78,13 @@ local function run_project(build_system, config, with_args)
                 run_func = with_args and pascal_run.run_debug_with_args or pascal_run.run_debug
             else
                 run_func = with_args and pascal_run.run_release_with_args or pascal_run.run_release
+            end
+        elseif build_info.lang == "assembler" then
+            build_func = asm_build.build_project
+            if config == "Debug" then
+                run_func = with_args and asm_run.run_debug_with_args or asm_run.run_debug
+            else
+                run_func = with_args and asm_run.run_release_with_args or asm_run.run_release
             end
         else
             error("Unsupported native language: " .. tostring(build_info.lang))
