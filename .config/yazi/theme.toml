@@ -865,7 +865,7 @@ conds = [
 	{ if = "dummy", text = "" },
 
 	# Fallback
-	{ if = "dir", text = "" },
+	{ if = "dir", text = "" , fg = "#abc5ff"},
 	{ if = "exec", text = "" },
 	{ if = "!dir", text = "" },
 ]
