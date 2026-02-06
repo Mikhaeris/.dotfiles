@@ -109,10 +109,10 @@ return {
     require("dap.codelldb")
 
     local launch = require('scripts.code_runner.main')
-    vim.keymap.set('n', '<F5>', function() launch.run_debug() end, {silent=true})
-    vim.keymap.set('n', '<F6>', function() launch.run_debug_with_args() end, {silent=true})
+    vim.keymap.set('n', '<F5>', function() launch.run("debug", 0) end, {silent=true})
+    vim.keymap.set('n', '<F6>', function() launch.run("debug", 1) end, {silent=true})
 
-    vim.keymap.set("n", "<F7>", function() launch.run_release() end, { noremap = true, silent = true })
-    vim.keymap.set("n", "<F8>", function() launch.run_release_with_args() end, { noremap = true, silent = true })
+    vim.keymap.set("n", "<F7>", function() launch.run("release", 0) end, { noremap = true, silent = true })
+    vim.keymap.set("n", "<F8>", function() launch.run("release", 1) end, { noremap = true, silent = true })
   end,
 }
