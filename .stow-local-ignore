@@ -21,8 +21,8 @@ _darcs
 ^/COPYING
 
 # custom
-\static
-\etc
-\install_packages.sh
-\docs.md
-\README.md
+static
+etc
+install_packages.sh
+docs.md
+README.md
