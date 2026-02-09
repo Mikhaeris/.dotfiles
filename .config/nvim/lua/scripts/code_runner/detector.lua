@@ -8,7 +8,7 @@ function M.get_build_command()
 	elseif vim.fn.filereadable("Makefile") == 1 then
 		return "make"
 	elseif vim.fn.filereadable("CMakeLists.txt") == 1 then
-		return "cmake --build build"
+		return "cmake"
 	end
 	return nil
 end
