@@ -1,167 +1,26 @@
 # Dotfiles
+![](./static/main.png)
 
-Arch setup, but mb work on other distro
+### Programs
+- kitty (https://github.com/kovidgoyal/kitty)
+- zsh (https://www.zsh.org/)
+- oh-my-zsh (https://github.com/ohmyzsh/ohmyzsh)
+- starship (https://github.com/starship/starship)
+- yazi (https://github.com/sxyazi/yazi)
+- fastfetch (https://github.com/fastfetch-cli/fastfetch)
+- Hyprland (https://github.com/hyprwm/Hyprland)
+- eww (https://github.com/elkowar/eww)
+- rofi (https://github.com/davatorium/rofi)
+- matugen (https://github.com/InioX/matugen)
 
-This is configuration to work with keyboad, all stuff in this philosofy
-
-## Requrements
-
-```
-pacman -S git stow zsh
-```
-
-some other stuf
-
-
-## Instalation
-
-in home directory
-```
-git clone git@github.com:Mikhaeris/.dotfiles.git
-cd .dotfiles
-```
-### font
-
-```
-sudo pacman -S ttf-jetbrains-mono-nerd
-fc-cache -fv
-```
-
-### zsh
-
-```
-sudo pacman -S zsh
-```
-
-#### starship
-
-```
-sudo pacman -S starship
-```
-
-### Stow control
-
-In .dotfiles folder
-to create symlink
-```
-stow .
-```
-delete symlinks
-```
-stow -D .
-```
-
-### power-profiles-daemon
-
-link:
-```
-https://wiki.archlinux.org/title/CPU_frequency_scaling#power-profiles-daemon
-```
-repo:
-```
-https://gitlab.freedesktop.org/upower/power-profiles-daemon#power-profiles-daemon
-```
-man:
-```
-https://manpages.debian.org/unstable/power-profiles-daemon/powerprofilesctl.1.en.html
-```
-
-#### Smal use
-
-enable:
-```
-sudo systemctl enable --now power-profiles-daemon
-```
-
-list power profiles:
-```
-powerprofilesctl list
-
-```
-
-set profile:
-```
-powerprofilesctl set [profile in command above]
-```
-
-### Sound
-
-install
-```
-sudo pacman -S pipewire pipewire-pulse pipewire-alsa pipewire-jack pipewire-jack wireplumber
-```
-activate services
-```
-systemctl --user enable --now pipewire pipewire-pulse wireplumber
-```
-control
-```
-sudo pacman -S pavucontrol easyeffects
-```
-
-### tmux
-
-update tpm pligind:
-```
-<leader> I
-```
-
-# All instruments
-
-hyprland  - wm
-kitty     - terminal
-
-tmux
-nvim
-yazi
-zsh
-
-
-# some tools
-
-## temperature
-
-install:
-```
-sudo pacman -S lm_sensors
-```
-
-set:
-```
-sudo sensors-detect
-```
-
-use:
-```
-sensors
-```
-
-## player control
-to enable keyboard prev stop next button (for music and other content)
-```
-sudo pacman -S playerctl
-```
-## gtk theme
-?install:
-```
-paru -S nwg-look
-```
-
-```
-paru -S matugen-bin
-```
-
-
-
-# Bar config
-
-install and make eww
-```
-in repo
-```
-
-install:
-```
-sudo pacman -S wl-clipboard ...
-
-```
+### Configs
+- kitty custom and from https://github.com/mylinuxforwork/dotfiles/blob/main/dotfiles/.config/kitty/kitty.conf
+- matugen-themes https://github.com/InioX/matugen-themes
+- eww from https://github.com/sudoharun/dotfiles/tree/generic
+- zsh and oh-my-zsh custom
+- tmux
+- fastfetch https://github.com/fastfetch-cli/fastfetch/blob/dev/presets/examples/7.jsonc
+- hyprland custom and from https://github.com/mylinuxforwork/dotfiles/tree/main/dotfiles/.config/hypr
+- nvim custom
+- rofi from https://github.com/mylinuxforwork/dotfiles/tree/main/dotfiles/.config/rofi
+- yazi from mathugen-theme

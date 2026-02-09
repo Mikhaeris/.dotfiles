@@ -19,3 +19,10 @@ _darcs
 ^/README.*
 ^/LICENSE.*
 ^/COPYING
+
+# custom
+\static
+\etc
+\install_packages.sh
+\docs.md
+\README.md
