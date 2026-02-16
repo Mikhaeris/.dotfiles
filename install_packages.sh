@@ -26,6 +26,7 @@ packages=(
   ipset
   jq
   kitty
+  lazygit
   libdbusmenu-gtk3
   linux
   linux-firmware
