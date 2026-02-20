@@ -10,6 +10,7 @@
 - fastfetch (https://github.com/fastfetch-cli/fastfetch)
 - Hyprland (https://github.com/hyprwm/Hyprland)
 - eww (https://github.com/elkowar/eww)
+- lucien (https://github.com/Wachamuli/lucien)
 - rofi (https://github.com/davatorium/rofi)
 - matugen (https://github.com/InioX/matugen)
 
@@ -22,5 +23,5 @@
 - fastfetch https://github.com/fastfetch-cli/fastfetch/blob/dev/presets/examples/7.jsonc
 - hyprland custom and from https://github.com/mylinuxforwork/dotfiles/tree/main/dotfiles/.config/hypr
 - nvim custom
-- rofi from https://github.com/mylinuxforwork/dotfiles/tree/main/dotfiles/.config/rofi
+- lucien custom and from https://github.com/Wachamuli/lucien/blob/main/assets/preferences.toml
 - yazi from mathugen-theme
