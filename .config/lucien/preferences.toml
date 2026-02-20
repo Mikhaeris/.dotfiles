@@ -1,0 +1,46 @@
+scan_batch_size = 10
+favorite_apps = []
+
+# Available modifiers: , `alt`, `shift`, and `control`.
+# Available keys: `any character`, `tab`, `escape`, and `arrow buttons`.
+# Available actions: `toggle_favorite`, `previous_entry`, `next_entry`, launch_entry(int), and `close`.
+[keybindings]
+control-k = "previous_entry"
+control-j = "next_entry"
+
+# KDE-Style Theme
+[theme]
+background = "#232627F2"
+border = {color = "#31363B", width = 1.0, radius = [8, 8, 8, 8]}
+
+[theme.prompt]
+background = "#1B1E2000"
+placeholder_color = "#A1A9B1"
+text_color = "#FCFCFC"
+font_size = 18
+icon_size = 0
+padding = [12, 12, 12, 12]
+margin = [10, 10, 0, 10]
+# border = {color = "#3DAEE9", width = 1.5, radius = [5, 5, 5, 5]}
+
+[theme.separator]
+color = "#1B1E2000"
+width = 0
+padding = 0
+radius = 0.0
+
+[theme.launchpad]
+padding = 8.0
+
+[theme.launchpad.entry]
+background = "#00000000"
+# focus_highlight = "#3DAEE933"
+# hover_highlight = "#3DAEE91A"
+font_size = 14
+secondary_font_size = 12
+main_text = "#FCFCFC"
+secondary_text = "#A1A9B1"
+padding = [ 10, 12, 10, 12 ]
+height = 54.0
+icon_size = 0
+border = {color = "#00000000", width = 0.0, radius = [ 5, 5, 5, 5 ]}
