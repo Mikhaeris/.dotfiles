@@ -40,8 +40,8 @@ function M.run(mode, ask_args)
 	elseif mode == "release" then
 		ui.run_in_terminal(exe .. " " .. args_str)
 	else
-    vim.notify("Bad mode!", vim.log.levels.ERROR);
-  end
+		vim.notify("Bad mode!", vim.log.levels.ERROR)
+	end
 end
 
 return M

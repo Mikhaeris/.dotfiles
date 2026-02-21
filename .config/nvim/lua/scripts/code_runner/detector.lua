@@ -9,6 +9,8 @@ function M.get_build_command()
 		return "make"
 	elseif vim.fn.filereadable("CMakeLists.txt") == 1 then
 		return "cmake"
+  elseif vim.fn.filereadable("index.html") == 1 then
+    return "html"
 	end
 	return nil
 end
