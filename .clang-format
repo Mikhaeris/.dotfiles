@@ -7,4 +7,3 @@ AccessModifierOffset: -4
 IndentCaseLabels: true
 PointerAlignment: Left
 ReferenceAlignment: Left
-...
