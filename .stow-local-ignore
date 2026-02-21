@@ -22,7 +22,7 @@ _darcs
 
 # custom
 static
+scripts
 etc
-install_packages.sh
 docs.md
 README.md
