@@ -37,10 +37,10 @@ function M.start()
 		local url = "http://localhost:" .. state.config.port
 		vim.notify("󰄭 Browser-sync started on " .. url, vim.log.levels.INFO)
 
-		if state.config.auto_open and not state.browser_opened then
-			vim.ui.open(url)
-			state.browser_opened = true
-		end
+	--		if state.config.auto_open and not state.browser_opened then
+	--			vim.ui.open(url)
+	--			state.browser_opened = true
+	--    end
 	else
 		vim.notify("Failed to start browser-sync", vim.log.levels.ERROR)
 	end
