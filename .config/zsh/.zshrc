@@ -19,7 +19,11 @@
 #                          /____/                        #
 # ------------------------------------------------------ #
 
-# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+
+# Cache
+[[ -d ~/.cache/zsh ]] || mkdir -p ~/.cache/zsh
+export ZSH_COMPDUMP="$HOME/.cache/zsh/zcompdump-${HOST}-${ZSH_VERSION}"
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -69,7 +73,7 @@ export LC_CTYPE=en_US.utf8
 # History
 HIST_STAMPS="mm/dd/yyyy"
 HISTSIZE=5000
-HISTFILE=~/.zsh_history
+HISTFILE="$HOME/.cache/zsh/.zsh_history"
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
 setopt appendhistory
