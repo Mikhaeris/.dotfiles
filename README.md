@@ -1,9 +1,10 @@
 # Dotfiles
-![](./static/main.png)
+![](./static//preview/main.png)
 
 ### Programs
 - kitty (https://github.com/kovidgoyal/kitty)
 - zsh (https://www.zsh.org/)
+- tmux (https://github.com/tmux/tmux)
 - oh-my-zsh (https://github.com/ohmyzsh/ohmyzsh)
 - starship (https://github.com/starship/starship)
 - yazi (https://github.com/sxyazi/yazi)
@@ -19,7 +20,7 @@
 - matugen-themes https://github.com/InioX/matugen-themes
 - eww from https://github.com/sudoharun/dotfiles/tree/generic
 - zsh and oh-my-zsh custom
-- tmux
+- tmux (i forgot)
 - fastfetch https://github.com/fastfetch-cli/fastfetch/blob/dev/presets/examples/7.jsonc
 - hyprland custom and from https://github.com/mylinuxforwork/dotfiles/tree/main/dotfiles/.config/hypr
 - nvim custom
