@@ -33,7 +33,7 @@ return {
 						action = ":Lazy",
 						enabled = package.loaded.lazy ~= nil,
 					},
-					{ icon = "󰒲 ", key = "W", desc = "Wrapped", action = ":NvimWrapped" },
+					{ icon = " ", key = "W", desc = "Wrapped", action = ":NvimWrapped" },
 					{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
 				},
 			},
