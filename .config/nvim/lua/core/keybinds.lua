@@ -7,3 +7,6 @@ vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
 -- Copy text
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { noremap = true, silent = true })
 vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { noremap = true, silent = true })
+
+-- Change directory
+vim.keymap.set("n", "<leader>gc", ":cd %:p:h<CR>", { silent = true })
