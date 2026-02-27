@@ -3,7 +3,7 @@ return {
     "echasnovski/mini.bufremove",
     config = function()
       require("mini.bufremove").setup()
-      vim.keymap.set("n", "<leader>c", function()
+      vim.keymap.set("n", "<leader>ct", function()
         require("mini.bufremove").delete(0, false)
       end)
     end,
