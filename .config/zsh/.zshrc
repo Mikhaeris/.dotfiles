@@ -29,6 +29,8 @@ export ZSH_COMPDUMP="$HOME/.cache/zsh/zcompdump-${HOST}-${ZSH_VERSION}"
 export ZSH="$HOME/.oh-my-zsh"
 
 # ZSH_THEME="robbyrussell"
+
+# Starship
 eval "$(starship init zsh)"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -86,6 +88,9 @@ setopt hist_find_no_dups
 
 # Source yazi wrapper if exists
 [[ -f ~/.config/yazi/wrapper.sh ]] && source ~/.config/yazi/wrapper.sh
+
+# Zoxide
+eval "$(zoxide init zsh)"
 
 # alias vim='nvim'
 alias pkgup="sudo pacman -Syu --noconfirm && paru -Syu --noconfirm"
