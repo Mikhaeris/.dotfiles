@@ -23,13 +23,13 @@ return {
 	---@type overseer.SetupOpts
 	---
 	opts = {
-		-- strategy = "toggleterm",
+		strategy = "toggleterm",
 		component_aliases = {
-			-- default = {
-			-- 	"on_exit_set_status",
-			-- 	{ "on_complete_notify", system = "unfocused" },
-			-- 	{ "on_complete_dispose", require_view = { "SUCCESS", "FAILURE" } },
-			-- },
+			default = {
+				"on_exit_set_status",
+				{ "on_complete_notify", system = "unfocused" },
+				{ "on_complete_dispose", require_view = { "SUCCESS", "FAILURE" } },
+			},
 		},
 		output = {
 			use_terminal = false,
@@ -48,16 +48,21 @@ return {
 		overseer.register_template({
 			name = "cppcheck",
 			builder = function()
-				local targets = vim.split("main.c ./src", " ")
+				local targets = { "main.c", "./src" }
+
+				local args = {
+					"--enable=all",
+					"--inline-suppr",
+					"--template=gcc",
+					"--suppress=missingIncludeSystem",
+				}
+
+				vim.list_extend(args, targets)
+
 				return {
-					cmd = "cppcheck",
-					args = {
-						"--enable=all",
-						"--inline-suppr",
-						"--template=gcc",
-						"--suppress=missingIncludeSystem",
-						targets,
-					},
+					cmd = { "cppcheck" },
+					args = args,
+					name = "cppcheck",
 					cwd = vim.fn.getcwd(),
 					components = { "default" },
 				}
@@ -78,6 +83,7 @@ return {
 						"--error-exitcode=1",
 						exe,
 					},
+					name = "valgrind",
 					cwd = vim.fn.getcwd(),
 					components = { "default" },
 				}
