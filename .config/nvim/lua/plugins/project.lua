@@ -1,0 +1,14 @@
+return {
+	"DrKJeff16/project.nvim",
+  enabled = false,
+	dependencies = { -- OPTIONAL. Choose any of the following
+		{
+			"nvim-telescope/telescope.nvim",
+			dependencies = { "nvim-lua/plenary.nvim" },
+		},
+		"wsdjeg/picker.nvim",
+		"folke/snacks.nvim",
+		"ibhagwan/fzf-lua",
+	},
+	opts = {},
+}
