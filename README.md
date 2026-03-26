@@ -11,7 +11,7 @@
 - fastfetch (https://github.com/fastfetch-cli/fastfetch)
 - Hyprland (https://github.com/hyprwm/Hyprland)
 - quickshell (https://quickshell.org/)
-- caelesia-shell (https://github.com/caelestia-dots/shell)
+- caelestia-shell (https://github.com/caelestia-dots/shell)
 - lucien (https://github.com/Wachamuli/lucien)
 - rofi (https://github.com/davatorium/rofi)
 - matugen (https://github.com/InioX/matugen)
