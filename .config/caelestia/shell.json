@@ -146,7 +146,7 @@
       "showWindowsOnSpecialWorkspaces": true,
       "maxWindowIcons": 0,
       "activeTrail": false,
-      "perMonitorWorkspaces": false,
+      "perMonitorWorkspaces": true,
       "label": "  ",
       "occupiedLabel": "󰮯",
       "activeLabel": "󰮯",
@@ -174,7 +174,7 @@
     "status": {
       "showAudio": true,
       "showMicrophone": false,
-      "showKbLayout": false,
+      "showKbLayout": true,
       "showNetwork": true,
       "showWifi": true,
       "showBluetooth": false,
@@ -220,7 +220,7 @@
         "id": "statusIcons"
       },
       {
-        "enabled": true,
+        "enabled": false,
         "id": "power"
       }
     ],
