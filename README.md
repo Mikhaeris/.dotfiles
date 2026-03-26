@@ -10,7 +10,8 @@
 - yazi (https://github.com/sxyazi/yazi)
 - fastfetch (https://github.com/fastfetch-cli/fastfetch)
 - Hyprland (https://github.com/hyprwm/Hyprland)
-- eww (https://github.com/elkowar/eww)
+- quickshell (https://quickshell.org/)
+- caelesia-shell (https://github.com/caelestia-dots/shell)
 - lucien (https://github.com/Wachamuli/lucien)
 - rofi (https://github.com/davatorium/rofi)
 - matugen (https://github.com/InioX/matugen)
@@ -18,7 +19,6 @@
 ### Configs
 - kitty custom and from https://github.com/mylinuxforwork/dotfiles/blob/main/dotfiles/.config/kitty/kitty.conf
 - matugen-themes https://github.com/InioX/matugen-themes
-- eww from https://github.com/sudoharun/dotfiles/tree/generic
 - zsh and oh-my-zsh custom
 - tmux (i forgot)
 - fastfetch https://github.com/fastfetch-cli/fastfetch/blob/dev/presets/examples/7.jsonc
