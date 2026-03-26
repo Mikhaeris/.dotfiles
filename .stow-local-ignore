@@ -23,6 +23,7 @@ _darcs
 # custom
 static
 scripts
+docs
 etc
 docs.md
 README.md
