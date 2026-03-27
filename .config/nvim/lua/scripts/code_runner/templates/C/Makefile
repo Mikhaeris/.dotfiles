@@ -5,7 +5,7 @@ LIBS    :=
 
 MODE ?= debug
 BUILD_DIR ?= build/$(MODE)
-SRC := main.c $(shell find src -name '*.c')
+SRC := main.c $(shell [ -d src ] && find src -name '*.c')
 OBJ := $(patsubst %.c,$(BUILD_DIR)/%.o,$(SRC))
 DEP := $(OBJ:.o=.d)
 TARGET := $(BUILD_DIR)/main

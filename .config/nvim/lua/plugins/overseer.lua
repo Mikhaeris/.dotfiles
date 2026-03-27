@@ -90,18 +90,5 @@ return {
 				}
 			end,
 		})
-
-		overseer.register_template({
-			name = "make debug custom",
-			builder = function()
-				return {
-					cmd = { "make" },
-					args = { "debug", "./build/debug" },
-					name = "make debug run",
-					cwd = vim.fn.getcwd(),
-					components = { "default" },
-				}
-			end,
-		})
 	end,
 }
