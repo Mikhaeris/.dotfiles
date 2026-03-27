@@ -1,34 +1,54 @@
-CC := gcc
-CFLAGS := -Iinclude -Wall -Wextra -std=c11
+CC      := clang
+CFLAGS  := -Iinclude -Wall -Wextra -std=c11
 LDFLAGS :=
-
-SRC := main.c $(wildcard src/*.c)
+LIBS    :=
 
 MODE ?= debug
 BUILD_DIR ?= build/$(MODE)
+SRC := main.c $(shell find src -name '*.c')
+OBJ := $(patsubst %.c,$(BUILD_DIR)/%.o,$(SRC))
+DEP := $(OBJ:.o=.d)
 TARGET := $(BUILD_DIR)/main
 
 ifeq ($(MODE),debug)
-	CFLAGS += -g -O0
+  CFLAGS  += -g3 -O0 -fno-omit-frame-pointer -fstandalone-debug \
+             -fsanitize=address,undefined
+  LDFLAGS += -fsanitize=address,undefined
 else ifeq ($(MODE),release)
-	CFLAGS += -O2 -DNDEBUG
+  # -march=native, -fcf-protection=full - for other platforms need delete
+  #  or use -mtune=generic
+  CFLAGS  += -O3 -DNDEBUG -march=native -flto=thin \
+             -fvisibility=hidden \
+             -fstack-protector-strong -fstack-clash-protection \
+             -fcf-protection=full \
+             -fPIE \
+             -D_FORTIFY_SOURCE=3
+  LDFLAGS += -flto=thin -fuse-ld=lld \
+             -Wl,-O1 -Wl,--as-needed \
+             -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack \
+             -pie
+  POST_BUILD := strip --strip-all $(TARGET)
 endif
 
 .PHONY: all debug release clean
 
-all: $(TARGET)
+all: debug
 
 debug:
-	$(MAKE) MODE=debug BUILD_DIR=$(word 2,$(MAKECMDGOALS)) all
+	$(MAKE) MODE=debug _build
 
 release:
-	$(MAKE) MODE=release BUILD_DIR=$(word 2,$(MAKECMDGOALS)) all
+	$(MAKE) MODE=release _build
 
-$(BUILD_DIR):
-	mkdir -p $(BUILD_DIR)
+_build: $(TARGET)
+$(BUILD_DIR)/%.o: %.c
+	@mkdir -p $(@D)
+	$(CC) $(CFLAGS) -MMD -MP -c $< -o $@
+$(TARGET): $(OBJ)
+	$(CC) $(OBJ) -o $@ $(LDFLAGS) $(LIBS)
+	$(if $(POST_BUILD),$(POST_BUILD))
 
-$(TARGET): $(SRC) | $(BUILD_DIR)
-	$(CC) $(CFLAGS) $(SRC) -o $(TARGET) $(LDFLAGS)
+-include $(DEP)
 
 clean:
 	rm -rf build

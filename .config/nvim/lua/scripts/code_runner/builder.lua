@@ -9,7 +9,9 @@ function M.compile(cmd, mode, build_dir)
 	if cmd == "cmake" then
 		full_cmd =
 			string.format("cmake -B %s -DCMAKE_BUILD_TYPE=%s && cmake --build %s", build_dir, cmake_mode, build_dir)
-	else
+	elseif cmd == "make" then
+		full_cmd = string.format("%s %s", cmd, mode)
+  else
 		vim.fn.mkdir(build_dir, "p")
 		full_cmd = string.format("%s %s %s", cmd, mode, build_dir)
 	end
