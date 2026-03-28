@@ -12,9 +12,8 @@
 - Hyprland (https://github.com/hyprwm/Hyprland)
 - quickshell (https://quickshell.org/)
 - caelestia-shell (https://github.com/caelestia-dots/shell)
-- lucien (https://github.com/Wachamuli/lucien)
-- rofi (https://github.com/davatorium/rofi)
 - matugen (https://github.com/InioX/matugen)
+- sddm (https://github.com/sddm/sddm)
 
 ### Configs
 - kitty custom and from https://github.com/mylinuxforwork/dotfiles/blob/main/dotfiles/.config/kitty/kitty.conf
@@ -24,5 +23,5 @@
 - fastfetch https://github.com/fastfetch-cli/fastfetch/blob/dev/presets/examples/7.jsonc
 - hyprland custom and from https://github.com/mylinuxforwork/dotfiles/tree/main/dotfiles/.config/hypr
 - nvim custom
-- lucien custom and from https://github.com/Wachamuli/lucien/blob/main/assets/preferences.toml
 - yazi from mathugen-theme
+- SilentSDDM (https://github.com/uiriansan/SilentSDDM)
