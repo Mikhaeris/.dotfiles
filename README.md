@@ -2,18 +2,18 @@
 ![](./static//preview/main.png)
 
 ### Programs
-- kitty (https://github.com/kovidgoyal/kitty)
-- zsh (https://www.zsh.org/)
-- tmux (https://github.com/tmux/tmux)
-- oh-my-zsh (https://github.com/ohmyzsh/ohmyzsh)
-- starship (https://github.com/starship/starship)
-- yazi (https://github.com/sxyazi/yazi)
-- fastfetch (https://github.com/fastfetch-cli/fastfetch)
-- Hyprland (https://github.com/hyprwm/Hyprland)
-- quickshell (https://quickshell.org/)
-- caelestia-shell (https://github.com/caelestia-dots/shell)
-- matugen (https://github.com/InioX/matugen)
-- sddm (https://github.com/sddm/sddm)
+- kitty - https://github.com/kovidgoyal/kitty
+- zsh - https://www.zsh.org/
+- tmux - https://github.com/tmux/tmux
+- oh-my-zsh - https://github.com/ohmyzsh/ohmyzsh
+- starship - https://github.com/starship/starship
+- yazi - https://github.com/sxyazi/yazi
+- fastfetch - https://github.com/fastfetch-cli/fastfetch
+- Hyprland - https://github.com/hyprwm/Hyprland
+- quickshell - https://quickshell.org/
+- caelestia-shell - https://github.com/caelestia-dots/shell
+- matugen - https://github.com/InioX/matugen
+- sddm - https://github.com/sddm/sddm
 
 ### Configs
 - kitty custom and from https://github.com/mylinuxforwork/dotfiles/blob/main/dotfiles/.config/kitty/kitty.conf
@@ -24,4 +24,4 @@
 - hyprland custom and from https://github.com/mylinuxforwork/dotfiles/tree/main/dotfiles/.config/hypr
 - nvim custom
 - yazi from mathugen-theme
-- SilentSDDM (https://github.com/uiriansan/SilentSDDM)
+- SilentSDDM - https://github.com/uiriansan/SilentSDDM
