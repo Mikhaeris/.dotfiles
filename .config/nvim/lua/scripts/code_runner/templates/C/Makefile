@@ -4,6 +4,8 @@ LDFLAGS :=
 LIBS    :=
 
 MODE ?= debug
+SANITIZE ?= 0
+
 BUILD_DIR ?= build/$(MODE)
 SRC := main.c $(shell [ -d src ] && find src -name '*.c')
 OBJ := $(patsubst %.c,$(BUILD_DIR)/%.o,$(SRC))
@@ -11,9 +13,11 @@ DEP := $(OBJ:.o=.d)
 TARGET := $(BUILD_DIR)/main
 
 ifeq ($(MODE),debug)
-  CFLAGS  += -g3 -O0 -fno-omit-frame-pointer -fstandalone-debug \
-             -fsanitize=address,undefined
-  LDFLAGS += -fsanitize=address,undefined
+  CFLAGS  += -g3 -O0
+  ifeq ($(SANITIZE),1)
+    CFLAGS  += -fno-omit-frame-pointer -fsanitize=address,undefined
+    LDFLAGS += -fsanitize=address,undefined
+  endif
 else ifeq ($(MODE),release)
   # -march=native, -fcf-protection=full - for other platforms need delete
   #  or use -mtune=generic
