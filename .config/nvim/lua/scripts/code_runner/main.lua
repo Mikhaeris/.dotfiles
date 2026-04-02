@@ -1,6 +1,7 @@
-local detector = require("scripts.code_runner.detector")
-local builder = require("scripts.code_runner.builder")
-local ui = require("scripts.code_runner.ui")
+local detector      = require("scripts.code_runner.detector")
+local script_runner = require("scripts.code_runner.script_runner")
+local builder       = require("scripts.code_runner.builder")
+local ui            = require("scripts.code_runner.ui")
 
 local M = {}
 
@@ -8,12 +9,18 @@ function M.run(mode, ask_args)
 	-- 1) Save files
 	vim.cmd("silent! wa")
 
+  -- additional) check if its script
+  if script_runner.is_script() then
+    script_runner.run(ask_args)
+    return
+  end
+
 	-- 2) Detect/find build system
 	local build_cmd = detector.get_build_command()
 	if not build_cmd then
 		vim.notify("Build sustem not found!", vim.log.levels.ERROR)
 		return
-	end
+  end
 
 	-- 3) Make paths
 	local build_dir = vim.fn.getcwd() .. "/build/" .. mode
