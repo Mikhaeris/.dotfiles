@@ -107,6 +107,7 @@ return {
     end
 
     require("dap.codelldb")
+    require("dap.debugpy")
 
     local launch = require('scripts.code_runner.main')
     vim.keymap.set('n', '<F5>', function() launch.run("debug", 0) end, {silent=true})

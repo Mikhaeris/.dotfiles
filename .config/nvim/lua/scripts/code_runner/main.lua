@@ -10,10 +10,14 @@ function M.run(mode, ask_args)
 	vim.cmd("silent! wa")
 
   -- additional) check if its script
-  if script_runner.is_script() then
-    script_runner.run(ask_args)
-    return
-  end
+	if script_runner.is_script() then
+		if mode == "debug" then
+			script_runner.debug(ask_args)
+		else
+			script_runner.run(ask_args)
+		end
+		return
+	end
 
 	-- 2) Detect/find build system
 	local build_cmd = detector.get_build_command()
