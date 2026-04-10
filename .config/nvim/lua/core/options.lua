@@ -40,4 +40,6 @@ vim.opt.listchars = {
 }
 
 -- system clipboard
--- vim.opt.clipboard = "unnamedplus"
+vim.opt.clipboard = "unnamedplus"
+
+vim.opt.fillchars:append({ eob = " " })
