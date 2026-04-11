@@ -43,14 +43,3 @@ vim.opt.listchars = {
 vim.opt.clipboard = "unnamedplus"
 
 vim.opt.fillchars:append({ eob = " " })
-
-vim.api.nvim_create_autocmd("FileType", {
-  group = vim.api.nvim_create_augroup("ts_native", { clear = true }),
-  callback = function(ev)
-    local disabled = { latex = true, tex = true }
-    if disabled[vim.bo[ev.buf].filetype] then return end
-
-    pcall(vim.treesitter.start, ev.buf)
-    -- vim.bo[ev.buf].indentexpr = "v:lua.vim.treesitter.indentexpr()"
-  end,
-})
