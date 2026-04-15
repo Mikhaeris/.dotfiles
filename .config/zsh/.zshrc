@@ -75,7 +75,7 @@ export LC_CTYPE=en_US.utf8
 # History
 HIST_STAMPS="mm/dd/yyyy"
 HISTSIZE=5000
-HISTFILE="$HOME/.cache/zsh/.zsh_history"
+HISTFILE="$HOME/.local/state/zsh/.zsh_history"
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
 setopt appendhistory
