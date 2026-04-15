@@ -5,7 +5,6 @@ set:
 org.freedesktop.impl.portal.FileChooser=termfilechooser
 ```
 
-
 ```
 # ~/.config/xdg-desktop-portal-termfilechooser/config
 [filechooser]
