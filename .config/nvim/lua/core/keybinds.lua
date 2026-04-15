@@ -5,8 +5,11 @@ vim.keymap.set("n", "<c-k>", ":wimcmd k<CR>")
 vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
 
 -- Copy text
-vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { noremap = true, silent = true })
-vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { noremap = true, silent = true })
+-- vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { noremap = true, silent = true })
+-- vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { noremap = true, silent = true })
+
+-- Paste text without forget
+vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- Select all
 vim.keymap.set("n", "<leader>a", "ggVG")
@@ -54,3 +57,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end, vim.tbl_extend("force", opts, { desc = "Diagnostics to loclist" }))
   end,
 })
+
+-- Move selected blocks
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
