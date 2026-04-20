@@ -1,7 +1,7 @@
 return {
 	"local/live-server",
 	dir = vim.fn.stdpath("config") .. "/lua/custom_plugins/live-server",
-  event = "VeryLazy",
+	event = "VeryLazy",
 	config = function(_, opts)
 		require("custom_plugins.live-server").setup(opts)
 	end,

@@ -1,10 +1,10 @@
 return {
 	"stevearc/overseer.nvim",
 	keys = {
-		{ "<leader>oo", "<cmd>OverseerToggle!<CR>", mode = "n", desc = "[O]verseer [O]pen" },
-		{ "<leader>or", "<cmd>OverseerRun<CR>", mode = "n", desc = "[O]verseer [R]un" },
-		{ "<leader>os", "<cmd>OverseerShell<CR>", mode = "n", desc = "[O]verseer [S]hell" },
-		{ "<leader>ot", "<cmd>OverseerTaskAction<CR>", mode = "n", desc = "[O]verseer [T]ask action" },
+		{ "<leader>oo", "<cmd>OverseerToggle!<CR>", mode = "n", desc = "Overseer Open" },
+		{ "<leader>or", "<cmd>OverseerRun<CR>", mode = "n", desc = "Overseer Run" },
+		{ "<leader>os", "<cmd>OverseerShell<CR>", mode = "n", desc = "Overseer Shell" },
+		{ "<leader>ot", "<cmd>OverseerTaskAction<CR>", mode = "n", desc = "Overseer Task action" },
 		{
 			"<leader>of",
 			function()
@@ -16,7 +16,7 @@ return {
 				end
 			end,
 			mode = "n",
-			desc = "overseer float output",
+			desc = "Overseer Float Output",
 		},
 	},
 	---@module 'overseer'

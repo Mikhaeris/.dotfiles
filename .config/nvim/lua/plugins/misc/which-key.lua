@@ -2,9 +2,26 @@ return {
 	"folke/which-key.nvim",
 	event = "VeryLazy",
 	opts = {
-		-- your configuration comes here
-		-- or leave it empty to use the default settings
-		-- refer to the configuration section below
+		delay = 500,
+		icons = {
+			mappings = false,
+		},
+		plugins = {
+			marks = false,
+			registers = false,
+			spelling = {
+				enabled = false,
+			},
+		},
+
+		triggers = {
+			{ "<leader>", mode = { "n", "v" } },
+		},
+
+		disable = {
+			buftypes = {},
+			filetypes = {},
+		},
 	},
 	keys = {
 		{
@@ -12,7 +29,7 @@ return {
 			function()
 				require("which-key").show({ global = false })
 			end,
-			desc = "Buffer Local Keymaps (which-key)",
+			desc = "Keymaps help",
 		},
 	},
 }

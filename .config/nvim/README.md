@@ -4,6 +4,7 @@
 <leader>b → buffers
 <leader>p → project
 <leader>t → terminal
+<leader>s → search / select / symbol
 <leader>u → UI / toggles
 
 

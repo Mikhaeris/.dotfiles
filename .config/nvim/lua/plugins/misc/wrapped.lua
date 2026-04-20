@@ -3,6 +3,6 @@ return {
 	dependencies = { "nvzone/volt" },
 	cmd = { "NvimWrapped" },
 	opts = {
-    config_path = vim.fn.stdpath("config"),
-  },
+		config_path = vim.fn.stdpath("config"),
+	},
 }

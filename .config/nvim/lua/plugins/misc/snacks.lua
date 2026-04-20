@@ -5,8 +5,18 @@ return {
 		dashboard = {
 			preset = {
 				keys = {
-					{ icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
-					{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+					{
+						icon = " ",
+						key = "f",
+						desc = "Find File",
+						action = ":lua Snacks.dashboard.pick('files')",
+					},
+					{
+						icon = " ",
+						key = "n",
+						desc = "New File",
+						action = ":ene | startinsert",
+					},
 					{
 						icon = " ",
 						key = "g",
@@ -25,7 +35,12 @@ return {
 						desc = "Config",
 						action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
 					},
-					{ icon = " ", key = "s", desc = "Restore Session", section = "session" },
+					{
+						icon = " ",
+						key = "p",
+						desc = "Open Project",
+						action = "<cmd>ProjectTelescope<cr>",
+					},
 					{
 						icon = "󰒲 ",
 						key = "L",
@@ -33,8 +48,18 @@ return {
 						action = ":Lazy",
 						enabled = package.loaded.lazy ~= nil,
 					},
-					{ icon = " ", key = "W", desc = "Wrapped", action = ":NvimWrapped" },
-					{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
+					{
+						icon = " ",
+						key = "W",
+						desc = "Wrapped",
+						action = ":NvimWrapped",
+					},
+					{
+						icon = " ",
+						key = "q",
+						desc = "Quit",
+						action = ":qa",
+					},
 				},
 			},
 		},

@@ -1,7 +1,7 @@
 -- Window set
 vim.keymap.set("n", "<c-h>", ":wincmd h<CR>")
-vim.keymap.set("n", "<c-j>", ":wimcmd j<CR>")
-vim.keymap.set("n", "<c-k>", ":wimcmd k<CR>")
+vim.keymap.set("n", "<c-j>", ":wincmd j<CR>")
+vim.keymap.set("n", "<c-k>", ":wincmd k<CR>")
 vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
 
 -- Copy text
