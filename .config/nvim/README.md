@@ -139,7 +139,7 @@ NVIM_APPNAME=Mikhaeris/.dotfiles/.config/nvim nvim
 + lua_ls
 
 ## Keybinding philosophy
-- <leader>f → find
+- \<leader\>f → find
 - <leader>g → git
 - <leader>c → code
 - <leader>b → buffers
