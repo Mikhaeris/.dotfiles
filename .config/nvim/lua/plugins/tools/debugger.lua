@@ -112,16 +112,16 @@ return {
 		local launch = require("scripts.code_runner.main")
 		vim.keymap.set("n", "<F5>", function()
 			launch.run("debug", 0)
-		end, { silent = true })
+		end, { silent = true, desc = "Build and start debug" })
 		vim.keymap.set("n", "<F6>", function()
 			launch.run("debug", 1)
-		end, { silent = true })
+		end, { silent = true, desc = "Build and start debug with args" })
 
 		vim.keymap.set("n", "<F7>", function()
 			launch.run("release", 0)
-		end, { noremap = true, silent = true })
+		end, { noremap = true, silent = true, desc = "Build and run code" })
 		vim.keymap.set("n", "<F8>", function()
 			launch.run("release", 1)
-		end, { noremap = true, silent = true })
+		end, { noremap = true, silent = true, desc = "Build and run code with args" })
 	end,
 }
