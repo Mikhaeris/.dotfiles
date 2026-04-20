@@ -1,5 +1,6 @@
 return {
 	"OXY2DEV/markview.nvim",
-	enabled = false,
-	lazy = false,
+	keys = {
+		{ "<leader>um", "<cmd>Markview<cr>", desc = "Toggle Markview" },
+	},
 }
