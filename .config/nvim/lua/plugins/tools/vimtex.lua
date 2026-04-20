@@ -18,7 +18,7 @@ return {
 			out_dir = "build",
 			executable = "latexmk",
 			options = {
-        "-pdf",
+				"-pdf",
 				-- "-pdfxe",
 				"-shell-escape",
 				"-verbose",

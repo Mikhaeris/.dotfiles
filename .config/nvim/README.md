@@ -1,3 +1,12 @@
+<leader>f → find (files, grep, buffers)
+<leader>g → git
+<leader>c → code (LSP)
+<leader>b → buffers
+<leader>p → project
+<leader>t → terminal
+<leader>u → UI / toggles
+
+
 Config for nvim
 
 To add new language:
@@ -6,7 +15,6 @@ To add new language:
     b) set lspconfig
 2) Formatting\syntax
     a) check Mason for formatter
-    b) null-ls (none-ls)
     c) treesitter
 4) DAP
     a) install dap in Mason

@@ -1,5 +1,6 @@
 return {
 	"bassamsdata/namu.nvim",
+  enabled = false,
 	opts = {
 		global = {},
 		namu_symbols = { -- Specific Module options

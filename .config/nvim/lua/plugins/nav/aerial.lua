@@ -15,8 +15,8 @@ return {
 	},
 	cmd = { "AerialToggle", "AerialOpen", "AerialNext", "AerialPrev" },
 	keys = {
-		{ "<leader>a", "<cmd>AerialToggle!<CR>", desc = "[A]erial toggle", mode = "n" },
-		{ "<leader>A", "<cmd>AerialNavToggle<CR>", desc = "[A]erial nav toggle", mode = "n" },
+		{ "<leader>oo", "<cmd>AerialToggle!<CR>", desc = "[A]erial toggle", mode = "n" },
+		{ "<leader>on", "<cmd>AerialNavToggle<CR>", desc = "[A]erial nav toggle", mode = "n" },
 		{ "[s", lazy_aerial.prev, desc = "Previous aerial symbol", mode = { "n", "v" } },
 		{ "]s", lazy_aerial.next, desc = "Next aerial symbol", mode = { "n", "v" } },
 		{ "[u", lazy_aerial.prev_up, desc = "Previous aerial parent symbol", mode = { "n", "v" } },

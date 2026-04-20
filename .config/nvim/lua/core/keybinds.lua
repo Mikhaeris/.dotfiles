@@ -15,7 +15,7 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set("n", "<leader>a", "ggVG")
 
 -- Change directory
-vim.keymap.set("n", "<leader>gc", ":cd %:p:h<CR>", { silent = true })
+vim.keymap.set("n", "<leader>pc", ":cd %:p:h<CR>", { silent = true })
 
 -- Keybindings for diagnostic
 local map = vim.keymap.set
@@ -41,7 +41,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.diagnostic.jump({ count = -1, severity = { min = sev.WARN } })
     end, vim.tbl_extend("force", opts, { desc = "Prev warning or worse" }))
 
-    map("n", "gl", function()
+    map("n", "df", function()
       vim.diagnostic.open_float({
         scope = "cursor",
         border = "rounded",
@@ -49,7 +49,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       })
     end, vim.tbl_extend("force", opts, { desc = "Line diagnostics" }))
 
-    map("n", "<leader>q", function()
+    map("n", "<leader>dl", function()
       vim.diagnostic.setloclist({
         open = true,
         severity = { min = sev.WARN },

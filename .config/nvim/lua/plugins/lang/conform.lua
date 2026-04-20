@@ -1,7 +1,7 @@
 return {
 	"stevearc/conform.nvim",
 	keys = {
-		{ "<leader>gf", '<cmd>lua require("conform").format()<cr>', mode = "n", desc = "Format current buffer" },
+		{ "<leader>cf", '<cmd>lua require("conform").format()<cr>', mode = "n", desc = "Format current buffer" },
 	},
 	opts = {
 		default_format_opts = {
