@@ -146,7 +146,7 @@ NVIM_APPNAME=Mikhaeris/.dotfiles/.config/nvim nvim
 - \<leader\>p → project
 
 ## Add new language
-- install lsp, linter annd other from Mason
+- install lsp, linter and other from Mason
 - install treesitter
 - add in code runner and dap
 
