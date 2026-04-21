@@ -2,7 +2,7 @@ return {
 	"DrKJeff16/project.nvim",
 	event = "VeryLazy",
 	dependencies = {
-		"ibhagwan/fzf-lua",
+		"folke/snacks.nvim",
 		"stevearc/resession.nvim",
 	},
 	opts = {
