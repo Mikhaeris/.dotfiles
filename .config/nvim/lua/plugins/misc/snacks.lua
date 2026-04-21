@@ -2,6 +2,7 @@ return {
 	"folke/snacks.nvim",
 	---@type snacks.Config
 	opts = {
+		scroll = {},
 		notifier = {
 			enabled = true,
 			timeout = 3000,
