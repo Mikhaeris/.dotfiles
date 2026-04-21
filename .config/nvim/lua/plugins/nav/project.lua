@@ -1,20 +1,6 @@
 return {
 	"DrKJeff16/project.nvim",
-	cmd = {
-		"Project",
-		"ProjectAdd",
-		"ProjectConfig",
-		"ProjectDelete",
-		"ProjectExport",
-		"ProjectHealth",
-		"ProjectHistory",
-		"ProjectImport",
-		"ProjectRecents",
-		"ProjectRoot",
-		"ProjectSession",
-		"ProjectSnacks",
-	},
-	-- event = "VeryLazy",
+	event = "VeryLazy",
 	dependencies = {
 		"folke/snacks.nvim",
 		"stevearc/resession.nvim",
