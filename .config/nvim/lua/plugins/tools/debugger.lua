@@ -15,7 +15,7 @@ return {
 			desc = "DAP: terminate terminal",
 		},
 		{
-			"<Leader>b",
+			"<Leader>db",
 			function()
 				require("dap").toggle_breakpoint()
 			end,
