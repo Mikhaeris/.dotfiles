@@ -28,10 +28,10 @@ return {
 		{ "<S-Tab>", "<cmd>BufferLineCyclePrev<CR>", mode = "n", silent = true },
 		-- { "<leader>c", "<cmd>bd<CR>", mode = "n", silent = true },
 
-		{ "<leader>t1", "1gt", desc = "Tab 1" },
-		{ "<leader>t2", "2gt", desc = "Tab 2" },
-		{ "<leader>t3", "3gt", desc = "Tab 3" },
-		{ "<leader>tn", "<cmd>tabnew<CR>", desc = "New Tab" },
-		{ "<leader>tc", "<cmd>tabclose<CR>", desc = "Close Tab" },
+		{ "<leader>b1", "1gt", desc = "Tab 1" },
+		{ "<leader>b2", "2gt", desc = "Tab 2" },
+		{ "<leader>b3", "3gt", desc = "Tab 3" },
+		{ "<leader>bn", "<cmd>tabnew<CR>", desc = "New Tab" },
+		{ "<leader>bc", "<cmd>tabclose<CR>", desc = "Close Tab" },
 	},
 }
