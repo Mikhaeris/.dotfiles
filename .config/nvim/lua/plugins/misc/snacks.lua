@@ -2,6 +2,12 @@ return {
 	"folke/snacks.nvim",
 	---@type snacks.Config
 	opts = {
+		notifier = {
+			enabled = true,
+			timeout = 3000,
+			style = "minimal",
+			top_down = true,
+		},
 		dashboard = {
 			preset = {
 				keys = {
