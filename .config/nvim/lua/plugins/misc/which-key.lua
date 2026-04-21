@@ -35,6 +35,7 @@ return {
 	config = function()
 		local wk = require("which-key")
 		wk.add({
+			{ "<leader>b", group = "Buffer" },
 			{ "<leader>c", group = "Code" },
 			{ "<leader>f", group = "Files" },
 			{ "<leader>g", group = "Git" },

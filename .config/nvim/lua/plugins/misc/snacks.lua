@@ -2,6 +2,22 @@ return {
 	"folke/snacks.nvim",
 	---@type snacks.Config
 	opts = {
+		picker = {
+			matcher = {
+				frecency = true,
+				cwd_bonus = true,
+			},
+			sources = {
+				files = {
+					hidden = true,
+					ignored = true,
+				},
+				grep = {
+					hidden = true,
+					ignored = true,
+				},
+			},
+		},
 		scroll = {},
 		notifier = {
 			enabled = true,
@@ -69,6 +85,22 @@ return {
 					},
 				},
 			},
+		},
+	},
+	keys = {
+		{
+			"<leader>ff",
+			function()
+				Snacks.picker.files()
+			end,
+			desc = "Find Files",
+		},
+		{
+			"<leader>fg",
+			function()
+				Snacks.picker.grep()
+			end,
+			desc = "Live Grep",
 		},
 	},
 }

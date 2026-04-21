@@ -2,8 +2,7 @@ return {
 	"DrKJeff16/project.nvim",
 	event = "VeryLazy",
 	dependencies = {
-		"nvim-lua/plenary.nvim",
-		"nvim-telescope/telescope.nvim",
+		"ibhagwan/fzf-lua",
 		"stevearc/resession.nvim",
 	},
 	opts = {
@@ -20,27 +19,20 @@ return {
 		scope_chdir = "global",
 		enable_autochdir = false,
 
-		telescope = { enabled = true },
+		snacks = {
+			enabled = true,
+			opts = {
+				sort = "newest",
+				hidden = false,
+				title = "Select Project",
+				layout = "select",
+				-- icon {},
+				-- path_icons = {},
+			},
+		},
 	},
 	config = function(_, opts)
 		require("project").setup(opts)
-
-		local telescope = require("telescope")
-		telescope.setup({
-			extensions = {
-				projects = {
-					prompt_prefix = "󱎸 ",
-					layout_strategy = "horizontal",
-					layout_config = {
-						anchor = "N",
-						height = 0.25,
-						width = 0.6,
-						prompt_position = "bottom",
-					},
-				},
-			},
-		})
-		telescope.load_extension("projects")
 
 		local resession = require("resession")
 
@@ -75,7 +67,7 @@ return {
 
 		vim.keymap.set("n", "<leader>pp", function()
 			session_active = true
-			vim.cmd("ProjectTelescope")
+			vim.cmd("ProjectSnacks")
 		end, { desc = "Projects: picker & activate sessions" })
 
 		-- Force active session for this directory
@@ -84,7 +76,7 @@ return {
 			resession.load(vim.fn.getcwd(), { dir = "dirsession", reset = true })
 		end, { desc = "Projects: force load session here" })
 
-		vim.keymap.set("n", "<leader>ps", "<cmd>ProjectRecents<cr>", { desc = "Projects: recents" })
+		-- vim.keymap.set("n", "<leader>ps", "<cmd>ProjectRecents<cr>", { desc = "Projects: recents" })
 		-- vim.keymap.set("n", "<leader>pc", "<cmd>ProjectRoot<cr>", { desc = "Projects: root" })
 	end,
 }
