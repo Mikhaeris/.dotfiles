@@ -9,13 +9,13 @@ vim.keymap.set("n", "<c-l>", "<cmd>wincmd l<CR>", { silent = true, desc = "Windo
 -- vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { noremap = true, silent = true })
 
 -- Paste text without forget
-vim.keymap.set("x", "<leader>p", [["_dP]])
+vim.keymap.set("x", "<leader>p", [["_dP]], { silent = true, desc = "Paste without forget" })
 
 -- Select all
-vim.keymap.set("n", "<leader>a", "ggVG")
+vim.keymap.set("n", "<leader>a", "ggVG", { silent = true, desc = "Select all" })
 
 -- Change directory
-vim.keymap.set("n", "<leader>pc", ":cd %:p:h<CR>", { silent = true })
+vim.keymap.set("n", "<leader>pc", ":cd %:p:h<CR>", { silent = true, desc = "Change directoty" })
 
 -- Keybindings for diagnostic
 local map = vim.keymap.set
@@ -59,5 +59,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 -- Move selected blocks
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected blocks down" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected blocks up" })
