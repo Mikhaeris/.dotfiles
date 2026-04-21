@@ -32,4 +32,18 @@ return {
 			desc = "Keymaps help",
 		},
 	},
+	config = function()
+		local wk = require("which-key")
+		wk.add({
+			{ "<leader>c", group = "Code" },
+			{ "<leader>f", group = "Files" },
+			{ "<leader>g", group = "Git" },
+			{ "<leader>o", group = "Overseer" },
+			{ "<leader>p", group = "Project" },
+			{ "<leader>s", group = "Symbols" },
+			{ "<leader>t", group = "Terminal" },
+			{ "<leader>u", group = "Ui" },
+			{ "<leader>tp", group = "Terminal presets" },
+		})
+	end,
 }
