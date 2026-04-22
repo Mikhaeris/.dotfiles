@@ -37,14 +37,15 @@ return {
 		wk.add({
 			{ "<leader>b", group = "Buffer" },
 			{ "<leader>c", group = "Code" },
+			{ "<leader>d", group = "Diagnostics" },
 			{ "<leader>f", group = "Files" },
 			{ "<leader>g", group = "Git" },
 			{ "<leader>o", group = "Overseer" },
 			{ "<leader>p", group = "Project" },
-			{ "<leader>s", group = "Symbols" },
+			{ "<leader>s", group = "Search/Jump" },
 			{ "<leader>t", group = "Terminal" },
-			{ "<leader>u", group = "Ui" },
 			{ "<leader>tp", group = "Terminal presets" },
+			{ "<leader>u", group = "Ui" },
 		})
 	end,
 }

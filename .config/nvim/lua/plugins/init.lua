@@ -6,5 +6,4 @@ return {
 	{ import = "plugins.nav" },
 	{ import = "plugins.tools" },
 	{ import = "plugins.ui" },
-	{ import = "plugins" },
 }

@@ -1,7 +1,6 @@
 return {
 	"folke/snacks.nvim",
   lazy = false,
-	---@type snacks.Config
 	opts = {
 		picker = {
 			matcher = {
@@ -35,12 +34,7 @@ return {
 						desc = "Find File",
 						action = ":lua Snacks.dashboard.pick('files')",
 					},
-					{
-						icon = " ",
-						key = "n",
-						desc = "New File",
-						action = ":ene | startinsert",
-					},
+					{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
 					{
 						icon = " ",
 						key = "g",
@@ -57,14 +51,9 @@ return {
 						icon = " ",
 						key = "c",
 						desc = "Config",
-						action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
+						action = ":lua Snacks.dashboard.pick('files', { cwd = vim.fn.stdpath('config') })",
 					},
-					{
-						icon = " ",
-						key = "p",
-						desc = "Open Project",
-						action = "<cmd>ProjectTelescope<cr>",
-					},
+					{ icon = " ", key = "p", desc = "Open Project", action = "<cmd>ProjectTelescope<cr>" },
 					{
 						icon = "󰒲 ",
 						key = "L",
@@ -72,18 +61,8 @@ return {
 						action = ":Lazy",
 						enabled = package.loaded.lazy ~= nil,
 					},
-					{
-						icon = " ",
-						key = "W",
-						desc = "Wrapped",
-						action = ":NvimWrapped",
-					},
-					{
-						icon = " ",
-						key = "q",
-						desc = "Quit",
-						action = ":qa",
-					},
+					{ icon = " ", key = "W", desc = "Wrapped", action = ":NvimWrapped" },
+					{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
 				},
 			},
 		},
@@ -102,6 +81,20 @@ return {
 				Snacks.picker.grep()
 			end,
 			desc = "Live Grep",
+		},
+		{
+			"<leader>fb",
+			function()
+				Snacks.picker.buffers()
+			end,
+			desc = "Find Buffers",
+		},
+		{
+			"<leader>fr",
+			function()
+				Snacks.picker.recent()
+			end,
+			desc = "Recent Files",
 		},
 	},
 }

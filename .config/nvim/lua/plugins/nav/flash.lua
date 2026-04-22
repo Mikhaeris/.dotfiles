@@ -1,6 +1,6 @@
 return {
   "folke/flash.nvim",
-  event = "VeryLazy",
+  -- event = "VeryLazy",
   opts = {},
   keys = {
     { "<leader>sj", function() require("flash").jump() end, desc = "Flash jump" },

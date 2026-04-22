@@ -8,27 +8,33 @@ vim.g.mapleader = " "
 vim.opt.number = true
 vim.opt.relativenumber = true
 
--- width tab
-vim.cmd([[
-  augroup FileTypeTabs
-    autocmd!
-    autocmd FileType lua setlocal tabstop=2 shiftwidth=2 expandtab
-    autocmd FileType zsh setlocal tabstop=2 shiftwidth=2 expandtab
-    autocmd FileType c   setlocal tabstop=4 shiftwidth=4 expandtab
-    autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 expandtab
-    autocmd FileType pascal setlocal tabstop=4 shiftwidth=4 expandtab
+-- indentation per filetype
+local indent_group = vim.api.nvim_create_augroup("FileTypeTabs", { clear = true })
 
-    autocmd FileType html setlocal tabstop=4 shiftwidth=4 expandtab
-    autocmd FileType css setlocal tabstop=2 shiftwidth=2 expandtab
-    autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 expandtab
-    autocmd FileType typescript setlocal tabstop=2 shiftwidth=2 expandtab
-  augroup END
-]])
+local indent_map = {
+	lua        = 2,
+	zsh        = 2,
+	css        = 2,
+	javascript = 2,
+	typescript = 2,
+	c          = 4,
+	cpp        = 4,
+	pascal     = 4,
+	html       = 4,
+}
 
--- vim.opt.tabstop = 4
--- vim.opt.shiftwidth = 4
--- vim.opt.softtabstop = 4
--- vim.opt.expandtab = true
+vim.api.nvim_create_autocmd("FileType", {
+	group    = indent_group,
+	pattern  = vim.tbl_keys(indent_map),
+	callback = function(ev)
+		local w = indent_map[vim.bo[ev.buf].filetype]
+		if w then
+			vim.opt_local.tabstop   = w
+			vim.opt_local.shiftwidth = w
+			vim.opt_local.expandtab = true
+		end
+	end,
+})
 
 vim.opt.list = true
 vim.opt.listchars = {

@@ -1,6 +1,6 @@
 -- Window set
 vim.keymap.set("n", "<c-h>", "<cmd>wincmd h<CR>", { silent = true, desc = "Window left" })
-vim.keymap.set("n", "<c-j>", "<cmf>wincmd j<CR>", { silent = true, desc = "Window down" })
+vim.keymap.set("n", "<c-j>", "<cmd>wincmd j<CR>", { silent = true, desc = "Window down" })
 vim.keymap.set("n", "<c-k>", "<cmd>wincmd k<CR>", { silent = true, desc = "Window up" })
 vim.keymap.set("n", "<c-l>", "<cmd>wincmd l<CR>", { silent = true, desc = "Window right" })
 
@@ -12,9 +12,9 @@ vim.keymap.set("n", "<c-l>", "<cmd>wincmd l<CR>", { silent = true, desc = "Windo
 vim.keymap.set("x", "<leader>p", [["_dP]], { silent = true, desc = "Paste without forget" })
 
 -- Select all
-vim.keymap.set("n", "<leader>a", "ggVG", { silent = true, desc = "Select all" })
+-- vim.keymap.set("n", "<leader>a", "ggVG", { silent = true, desc = "Select all" })
 
--- Change directory
+-- Change directory to current file
 vim.keymap.set("n", "<leader>pc", ":cd %:p:h<CR>", { silent = true, desc = "Change directoty" })
 
 -- Keybindings for diagnostic
@@ -41,7 +41,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.diagnostic.jump({ count = -1, severity = { min = sev.WARN } })
 		end, vim.tbl_extend("force", opts, { desc = "Prev warning or worse" }))
 
-		map("n", "df", function()
+		map("n", "gl", function()
 			vim.diagnostic.open_float({
 				scope = "cursor",
 				border = "rounded",

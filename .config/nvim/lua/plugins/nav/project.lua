@@ -1,9 +1,27 @@
 return {
 	"DrKJeff16/project.nvim",
-	event = "VeryLazy",
 	dependencies = {
 		"folke/snacks.nvim",
 		"stevearc/resession.nvim",
+	},
+	cmd = { "ProjectSnacks", "ProjectTelescope", "ProjectRoot", "ProjectRecents" },
+	keys = {
+		{
+			"<leader>pp",
+			function()
+				require("project")._session_active = true
+				vim.cmd("ProjectSnacks")
+			end,
+			desc = "Projects: picker & sessions",
+		},
+		{
+			"<leader>pr",
+			function()
+				require("project")._session_active = true
+				require("resession").load(vim.fn.getcwd(), { dir = "dirsession", reset = true })
+			end,
+			desc = "Projects: load session here",
+		},
 	},
 	opts = {
 		detection_methods = {
@@ -64,19 +82,5 @@ return {
 				end
 			end,
 		})
-
-		vim.keymap.set("n", "<leader>pp", function()
-			session_active = true
-			vim.cmd("ProjectSnacks")
-		end, { desc = "Projects: picker & activate sessions" })
-
-		-- Force active session for this directory
-		vim.keymap.set("n", "<leader>pr", function()
-			session_active = true
-			resession.load(vim.fn.getcwd(), { dir = "dirsession", reset = true })
-		end, { desc = "Projects: force load session here" })
-
-		-- vim.keymap.set("n", "<leader>ps", "<cmd>ProjectRecents<cr>", { desc = "Projects: recents" })
-		-- vim.keymap.set("n", "<leader>pc", "<cmd>ProjectRoot<cr>", { desc = "Projects: root" })
 	end,
 }
