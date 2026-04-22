@@ -7,6 +7,7 @@ end
 return {
   {
     "mfussenegger/nvim-dap",
+    lazy = true,
     dependencies = {
       "rcarriga/nvim-dap-ui",
       "theHamsta/nvim-dap-virtual-text",
@@ -43,6 +44,7 @@ return {
   },
   {
     "rcarriga/nvim-dap-ui",
+    lazy = true,
     dependencies = {
       "mfussenegger/nvim-dap",
       "nvim-neotest/nvim-nio",
@@ -92,6 +94,7 @@ return {
   },
   {
     "theHamsta/nvim-dap-virtual-text",
+    lazy = true,
     opts = {
       enabled = true,
       commented = false,
@@ -102,6 +105,7 @@ return {
   },
   {
     "jay-babu/mason-nvim-dap.nvim",
+    lazy = true,
     dependencies = { "williamboman/mason.nvim" },
     cmd = { "DapInstall", "DapUninstall" },
     opts = {
