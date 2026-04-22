@@ -54,12 +54,10 @@ return {
 
 		local resession = require("resession")
 
-		local session_active = false
-
 		-- Save before change project
 		vim.api.nvim_create_autocmd("DirChangedPre", {
 			callback = function()
-				if session_active then
+				if require("project")._session_active then
 					resession.save(vim.fn.getcwd(), { dir = "dirsession", notify = false })
 				end
 			end,
@@ -68,7 +66,7 @@ return {
 		-- Load seesion if directory changed
 		vim.api.nvim_create_autocmd("DirChanged", {
 			callback = function()
-				if session_active then
+				if require("project")._session_active then
 					resession.load(vim.fn.getcwd(), { dir = "dirsession", reset = true, silence_errors = true })
 				end
 			end,
@@ -77,7 +75,7 @@ return {
 		-- Save in close
 		vim.api.nvim_create_autocmd("VimLeavePre", {
 			callback = function()
-				if session_active then
+				if require("project")._session_active then
 					resession.save(vim.fn.getcwd(), { dir = "dirsession", notify = false })
 				end
 			end,
