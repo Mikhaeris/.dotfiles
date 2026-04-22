@@ -1,5 +1,5 @@
 return {
 	"stevearc/resession.nvim",
-  lazy = true,
+	lazy = true,
 	opts = {},
 }
