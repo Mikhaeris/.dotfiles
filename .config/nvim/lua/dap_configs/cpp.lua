@@ -1,14 +1,5 @@
 local dap = require("dap")
 
-dap.adapters.codelldb = {
-  type = "server",
-  port = "${port}",
-  executable = {
-    command = vim.fn.stdpath("data") .. "/mason/packages/codelldb/extension/adapter/codelldb",
-    args = { "--port", "${port}" },
-  },
-}
-
 dap.configurations.cpp = {
   {
     name = "Launch (codelldb)",
@@ -35,5 +26,3 @@ dap.configurations.cpp = {
     pid = require("dap.utils").pick_process,
   },
 }
-
-dap.configurations.c = dap.configurations.cpp
