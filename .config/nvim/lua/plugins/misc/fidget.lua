@@ -1,18 +1,18 @@
 return {
-    "j-hui/fidget.nvim",
-    enabled = false,
-    event = "LspAttach",
-    opts = {
-        -- notification = {
-        --     redirect = function(msg, level, opts)
-        --         return require("snacks").notify(msg, level, opts)
-        --     end,
-        -- },
-        progress = {
-            display = {
-                done_ttl = 1,
-                progress_ttl = 8,
-            },
-        },
+  "j-hui/fidget.nvim",
+  enabled = false,
+  event = "LspAttach",
+  opts = {
+    -- notification = {
+    --     redirect = function(msg, level, opts)
+    --         return require("snacks").notify(msg, level, opts)
+    --     end,
+    -- },
+    progress = {
+      display = {
+        done_ttl = 1,
+        progress_ttl = 8,
+      },
     },
+  },
 }

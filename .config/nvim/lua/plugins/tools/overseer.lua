@@ -1,94 +1,94 @@
 return {
-	"stevearc/overseer.nvim",
-	keys = {
-		{ "<leader>oo", "<cmd>OverseerToggle!<CR>", mode = "n", desc = "Overseer Open" },
-		{ "<leader>or", "<cmd>OverseerRun<CR>", mode = "n", desc = "Overseer Run" },
-		{ "<leader>os", "<cmd>OverseerShell<CR>", mode = "n", desc = "Overseer Shell" },
-		{ "<leader>ot", "<cmd>OverseerTaskAction<CR>", mode = "n", desc = "Overseer Task action" },
-		{
-			"<leader>of",
-			function()
-				local task = require("overseer").list_tasks({ recent_first = true })[1]
-				if task then
-					task:open_output("float")
-				else
-					vim.notify("no tasks running")
-				end
-			end,
-			mode = "n",
-			desc = "Overseer Float Output",
-		},
-	},
-	---@module 'overseer'
-	---@type overseer.SetupOpts
-	---
-	opts = {
-		strategy = "toggleterm",
-		component_aliases = {
-			default = {
-				"on_exit_set_status",
-				{ "on_complete_notify", system = "unfocused" },
-				{ "on_complete_dispose", require_view = { "SUCCESS", "FAILURE" } },
-			},
-		},
-		output = {
-			use_terminal = false,
-		},
-		task_list = {
-			direction = "left",
-			open_cmd = "vsplit",
-			width = 20,
-			show_detail = false,
-		},
-	},
-	config = function(_, opts)
-		local overseer = require("overseer")
-		overseer.setup(opts)
+  "stevearc/overseer.nvim",
+  keys = {
+    { "<leader>oo", "<cmd>OverseerToggle!<CR>", mode = "n", desc = "Overseer Open" },
+    { "<leader>or", "<cmd>OverseerRun<CR>", mode = "n", desc = "Overseer Run" },
+    { "<leader>os", "<cmd>OverseerShell<CR>", mode = "n", desc = "Overseer Shell" },
+    { "<leader>ot", "<cmd>OverseerTaskAction<CR>", mode = "n", desc = "Overseer Task action" },
+    {
+      "<leader>of",
+      function()
+        local task = require("overseer").list_tasks({ recent_first = true })[1]
+        if task then
+          task:open_output("float")
+        else
+          vim.notify("no tasks running")
+        end
+      end,
+      mode = "n",
+      desc = "Overseer Float Output",
+    },
+  },
+  ---@module 'overseer'
+  ---@type overseer.SetupOpts
+  ---
+  opts = {
+    strategy = "toggleterm",
+    component_aliases = {
+      default = {
+        "on_exit_set_status",
+        { "on_complete_notify", system = "unfocused" },
+        { "on_complete_dispose", require_view = { "SUCCESS", "FAILURE" } },
+      },
+    },
+    output = {
+      use_terminal = false,
+    },
+    task_list = {
+      direction = "left",
+      open_cmd = "vsplit",
+      width = 20,
+      show_detail = false,
+    },
+  },
+  config = function(_, opts)
+    local overseer = require("overseer")
+    overseer.setup(opts)
 
-		overseer.register_template({
-			name = "cppcheck",
-			builder = function()
-				local targets = { "main.c", "./src" }
+    overseer.register_template({
+      name = "cppcheck",
+      builder = function()
+        local targets = { "main.c", "./src" }
 
-				local args = {
-					"--enable=all",
-					"--inline-suppr",
-					"--template=gcc",
-					"--suppress=missingIncludeSystem",
-					"--suppress=checkersReport",
-				}
+        local args = {
+          "--enable=all",
+          "--inline-suppr",
+          "--template=gcc",
+          "--suppress=missingIncludeSystem",
+          "--suppress=checkersReport",
+        }
 
-				vim.list_extend(args, targets)
+        vim.list_extend(args, targets)
 
-				return {
-					cmd = { "cppcheck" },
-					args = args,
-					name = "cppcheck",
-					cwd = vim.fn.getcwd(),
-					components = { "default" },
-				}
-			end,
-		})
+        return {
+          cmd = { "cppcheck" },
+          args = args,
+          name = "cppcheck",
+          cwd = vim.fn.getcwd(),
+          components = { "default" },
+        }
+      end,
+    })
 
-		overseer.register_template({
-			name = "valgrind",
-			builder = function()
-				local exe = "./build/debug/main"
+    overseer.register_template({
+      name = "valgrind",
+      builder = function()
+        local exe = "./build/debug/main"
 
-				return {
-					cmd = { "valgrind" },
-					args = {
-						"--leak-check=full",
-						"--show-leak-kinds=all",
-						"--track-origins=yes",
-						"--error-exitcode=1",
-						exe,
-					},
-					name = "valgrind",
-					cwd = vim.fn.getcwd(),
-					components = { "default" },
-				}
-			end,
-		})
-	end,
+        return {
+          cmd = { "valgrind" },
+          args = {
+            "--leak-check=full",
+            "--show-leak-kinds=all",
+            "--track-origins=yes",
+            "--error-exitcode=1",
+            exe,
+          },
+          name = "valgrind",
+          cwd = vim.fn.getcwd(),
+          components = { "default" },
+        }
+      end,
+    })
+  end,
 }

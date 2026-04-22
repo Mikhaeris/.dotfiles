@@ -1,51 +1,52 @@
 return {
-	"folke/which-key.nvim",
-	event = "VeryLazy",
-	opts = {
-		delay = 500,
-		icons = {
-			mappings = false,
-		},
-		plugins = {
-			marks = false,
-			registers = false,
-			spelling = {
-				enabled = false,
-			},
-		},
+  "folke/which-key.nvim",
+  event = "VeryLazy",
+  opts = {
+    delay = 500,
+    icons = {
+      mappings = false,
+    },
+    plugins = {
+      marks = false,
+      registers = false,
+      spelling = {
+        enabled = false,
+      },
+    },
 
-		triggers = {
-			{ "<leader>", mode = { "n", "v" } },
-		},
+    triggers = {
+      { "<leader>", mode = { "n", "v" } },
+    },
 
-		disable = {
-			buftypes = {},
-			filetypes = {},
-		},
-	},
-	keys = {
-		{
-			"<leader>?",
-			function()
-				require("which-key").show({ global = false })
-			end,
-			desc = "Keymaps help",
-		},
-	},
-	config = function()
-		local wk = require("which-key")
-		wk.add({
-			{ "<leader>b", group = "Buffer" },
-			{ "<leader>c", group = "Code" },
-			{ "<leader>d", group = "Diagnostics" },
-			{ "<leader>f", group = "Files" },
-			{ "<leader>g", group = "Git" },
-			{ "<leader>o", group = "Overseer" },
-			{ "<leader>p", group = "Project" },
-			{ "<leader>s", group = "Search/Jump" },
-			{ "<leader>t", group = "Terminal" },
-			{ "<leader>tp", group = "Terminal presets" },
-			{ "<leader>u", group = "Ui" },
-		})
-	end,
+    disable = {
+      buftypes = {},
+      filetypes = {},
+    },
+  },
+  keys = {
+    {
+      "<leader>?",
+      function()
+        require("which-key").show({ global = false })
+      end,
+      desc = "Keymaps help",
+    },
+  },
+  config = function()
+    local wk = require("which-key")
+    wk.add({
+      { "<leader>b", group = "Buffer" },
+      { "<leader>c", group = "Code" },
+      { "<leader>d", group = "Debugger" },
+      { "<leader>f", group = "Files" },
+      { "<leader>g", group = "Git" },
+      { "<leader>o", group = "Overseer" },
+      { "<leader>p", group = "Project" },
+      { "<leader>s", group = "Search/Jump" },
+      { "<leader>t", group = "Terminal" },
+      { "<leader>tp", group = "Terminal presets" },
+      { "<leader>u", group = "Ui" },
+      { "<leader>x", group = "Diagnostics" },
+    })
+  end,
 }

@@ -1,19 +1,20 @@
 return {
-  'oribarilan/lensline.nvim',
+  "oribarilan/lensline.nvim",
   enabled = false,
-  branch = 'release/2.x',
-  event = 'LspAttach',
+  branch = "release/2.x",
+  event = "LspAttach",
   config = function()
-    require('lensline').setup {
+    require("lensline").setup({
       profiles = {
         {
-          name = 'minimal',
+          name = "minimal",
           style = {
-            placement = 'inline',
-            prefix = '',
+            placement = "inline",
+            prefix = "",
           },
         },
       },
       debug_mode = false,
-    }
-  end,}
+    })
+  end,
+}
