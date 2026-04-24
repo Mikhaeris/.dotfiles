@@ -121,7 +121,7 @@ return {
         function()
           open_hterm(i)
         end,
-        mode = { "n", "t", "i" },
+        mode = { "n", "t" },
         desc = "Terminal #" .. i,
       }
     end
@@ -131,7 +131,7 @@ return {
       function()
         open_float(FTERM_START)
       end,
-      mode = { "n", "t", "i" },
+      mode = { "n", "t" },
       desc = "Float terminal",
     }
 
