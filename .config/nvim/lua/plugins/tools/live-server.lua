@@ -18,6 +18,6 @@ return {
   },
 
   keys = {
-    { "<leader>ts", "<cmd>LiveServerToggle<cr>", desc = "Live Server Toggle" },
+    { "<leader>ol", "<cmd>LiveServerToggle<cr>", desc = "Live Server Toggle" },
   },
 }

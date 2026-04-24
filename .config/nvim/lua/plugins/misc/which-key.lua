@@ -40,7 +40,7 @@ return {
       { "<leader>d", group = "Debugger" },
       { "<leader>f", group = "Files" },
       { "<leader>g", group = "Git" },
-      { "<leader>o", group = "Overseer" },
+      { "<leader>o", group = "Tools" },
       { "<leader>p", group = "Project" },
       { "<leader>s", group = "Search/Jump" },
       { "<leader>t", group = "Terminal" },
