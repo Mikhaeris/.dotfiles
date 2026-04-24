@@ -9,13 +9,13 @@ vim.keymap.set("n", "<c-l>", "<cmd>wincmd l<CR>", { silent = true, desc = "Windo
 -- vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { noremap = true, silent = true })
 
 -- Paste text without forget
-vim.keymap.set("x", "<leader>p", [["_dP]], { silent = true, desc = "Paste without forget" })
+vim.keymap.set("x", "<leader>bp", [["_dP]], { silent = true, desc = "Paste without forget" })
 
 -- Select all
--- vim.keymap.set("n", "<leader>a", "ggVG", { silent = true, desc = "Select all" })
+vim.keymap.set("n", "<leader>ba", "ggVG", { silent = true, desc = "Select all" })
 
 -- Change directory to current file
-vim.keymap.set("n", "<leader>pc", ":cd %:p:h<CR>", { silent = true, desc = "Change directoty" })
+-- vim.keymap.set("n", "<leader>pc", ":cd %:p:h<CR>", { silent = true, desc = "Change directoty" })
 
 -- Keybindings for diagnostic
 local map = vim.keymap.set

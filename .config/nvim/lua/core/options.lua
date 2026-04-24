@@ -8,33 +8,6 @@ vim.g.mapleader = " "
 vim.opt.number = true
 vim.opt.relativenumber = true
 
--- indentation per filetype
-local indent_group = vim.api.nvim_create_augroup("FileTypeTabs", { clear = true })
-
-local indent_map = {
-  lua            = 2,
-  zsh            = 2,
-  css            = 2,
-  javascript     = 2,
-  typescript     = 2,
-  c              = 4,
-  cpp            = 4,
-  pascal         = 4,
-  html           = 4,
-}
-
-vim.api.nvim_create_autocmd("FileType", {
-  group = indent_group,
-  pattern = vim.tbl_keys(indent_map),
-  callback = function(ev)
-    local w = indent_map[vim.bo[ev.buf].filetype]
-    if w then
-      vim.opt_local.tabstop = w
-      vim.opt_local.shiftwidth = w
-      vim.opt_local.expandtab = true
-    end
-  end,
-})
 
 vim.opt.list = true
 vim.opt.listchars = {
@@ -49,3 +22,24 @@ vim.opt.listchars = {
 vim.opt.clipboard = "unnamedplus"
 
 vim.opt.fillchars:append({ eob = " " })
+
+-- Персистентный undo
+vim.opt.undofile = true
+vim.opt.undodir = vim.fn.stdpath("data") .. "/undo"
+
+-- Поиск
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.inccommand = "split"  -- live preview для :s
+
+-- Окна/сплиты
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
+-- Скролл
+vim.opt.scrolloff = 8
+vim.opt.sidescrolloff = 8
+
+-- Производительность
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 400
