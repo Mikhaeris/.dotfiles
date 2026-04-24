@@ -19,7 +19,17 @@ return {
       vim.lsp.config("*", { capabilities = capabilities })
       vim.lsp.config("clangd", require("lsp.clangd"))
 
-      vim.lsp.enable({ "clangd", "lua_ls" })
+      vim.lsp.enable({
+        "lua_ls",
+        "clangd",
+        "jdtls",
+        "asm_lsp",
+        "texlab",
+        "pyright",
+        "stylua",
+        "html",
+        "cssls",
+      })
 
       vim.opt.signcolumn = "no"
       vim.diagnostic.config({
@@ -49,7 +59,6 @@ return {
   },
   {
     "mason-org/mason-lspconfig.nvim",
-    -- cmd          = { "LspInstall", "LspUninstall" },
     event = "VeryLazy",
     dependencies = { "mason-org/mason.nvim" },
     opts = {
@@ -57,12 +66,12 @@ return {
         "lua_ls",
         "clangd",
         "jdtls",
-        "asm-lsp",
+        "asm_lsp",
         "texlab",
         "pyright",
         "stylua",
-        "html-lsp",
-        "css-lsp",
+        "html",
+        "cssls",
       },
       automatic_installation = false,
     },
