@@ -111,7 +111,11 @@ return {
     opts = {
       automatic_installation = true,
       handlers = {},
-      ensure_installed = { "codelldb", "debugpy" },
+      ensure_installed = {
+        "codelldb",
+        "debugpy",
+        "java-debug-adapter",
+      },
     },
     config = function() end,
   },

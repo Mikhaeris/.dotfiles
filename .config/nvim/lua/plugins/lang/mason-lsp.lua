@@ -53,7 +53,17 @@ return {
     event = "VeryLazy",
     dependencies = { "mason-org/mason.nvim" },
     opts = {
-      ensure_installed = { "lua_ls", "clangd" },
+      ensure_installed = {
+        "lua_ls",
+        "clangd",
+        "jdtls",
+        "asm-lsp",
+        "texlab",
+        "pyright",
+        "stylua",
+        "html-lsp",
+        "css-lsp",
+      },
       automatic_installation = false,
     },
   },
