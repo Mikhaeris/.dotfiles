@@ -11,6 +11,7 @@ return {
       lua = { "stylua" },
       c = { "clang_format" },
       cpp = { "clang_format" },
+      tex = { "latexindent" },
     },
   },
 }
