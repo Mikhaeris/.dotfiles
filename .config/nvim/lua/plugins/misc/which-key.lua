@@ -16,6 +16,7 @@ return {
 
     triggers = {
       { "<leader>", mode = { "n", "v" } },
+      { "<auto>", mode = "nxso" },
     },
 
     disable = {
@@ -29,24 +30,37 @@ return {
       function()
         require("which-key").show({ global = false })
       end,
-      desc = "Keymaps help",
+      desc = "Buffer keymaps",
+    },
+    {
+      "<leader>/",
+      function()
+        require("which-key").show({ global = true })
+      end,
+      desc = "Global keymaps",
     },
   },
   config = function()
     local wk = require("which-key")
     wk.add({
-      { "<leader>b", group = "Buffer" },
-      { "<leader>c", group = "Code" },
-      { "<leader>d", group = "Debugger" },
-      { "<leader>f", group = "Files" },
-      { "<leader>g", group = "Git" },
-      { "<leader>o", group = "Tools" },
-      { "<leader>p", group = "Project" },
-      { "<leader>s", group = "Search/Jump" },
-      { "<leader>t", group = "Terminal" },
-      { "<leader>tp", group = "Terminal presets" },
-      { "<leader>u", group = "Ui" },
-      { "<leader>x", group = "Diagnostics" },
+      { "<leader>b", group = "buffer" },
+      { "<leader>c", group = "code" },
+      { "<leader>d", group = "debugger" },
+      { "<leader>f", group = "files/find" },
+      { "<leader>g", group = "git" },
+      { "<leader>o", group = "tools/overseer" },
+      { "<leader>p", group = "project" },
+      { "<leader>r", group = "runner" },
+      { "<leader>s", group = "search/jump" },
+      { "<leader>t", group = "terminal" },
+      { "<leader>u", group = "ui/toggle" },
+      { "<leader>x", group = "diagnostics" },
+
+      { "<leader>tp", group = "preset" },
+      { "<leader><leader>", group = "swap splits" },
+
+      { "<leader>?", desc = "Buffer keymaps help" },
+      { "<leader>/", desc = "Global keymaps help" },
     })
   end,
 }
