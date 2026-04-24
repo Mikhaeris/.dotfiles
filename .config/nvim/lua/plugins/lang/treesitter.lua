@@ -13,8 +13,6 @@ return {
     local function ts_or_lsp(count)
       if vim.treesitter.get_parser(nil, nil, { error = false }) then
         require("vim.treesitter._select").select_parent(count)
-      else
-        vim.lsp.buf.selection_range(count)
       end
     end
 
