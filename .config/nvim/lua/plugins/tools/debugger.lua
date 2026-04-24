@@ -14,7 +14,7 @@ return {
     },
     -- stylua: ignore
     keys = {
-      { "<Leader>db", function() require("dap").toggle_breakpoint() end, desc = "DAP: Toggle Breakpoint" },
+      -- { "<Leader>db", function() require("dap").toggle_breakpoint() end, desc = "DAP: Toggle Breakpoint" },
       { "<F1>", function() require("dap").terminate() end, desc = "DAP: Terminate" },
       { "<F9>", function() require("dap").continue() end, desc = "DAP: Continue" },
       { "<F10>", function() require("dap").step_over() end, desc = "DAP: Step Over" },
@@ -118,5 +118,22 @@ return {
       },
     },
     config = function() end,
+  },
+  {
+    "Weissle/persistent-breakpoints.nvim",
+    event = "BufReadPost",
+    dependencies = { "mfussenegger/nvim-dap" },
+    opts = {
+      load_breakpoints_event = { "BufReadPost" },
+      -- where breakpoints are stored: stdpath("data")/breakpoints.json
+      save_dir = vim.fn.stdpath("data") .. "/nvim_checkpoints",
+      perf_record = false,
+    },
+    -- stylua: ignore
+    keys = {
+      { "<leader>db", function() require("persistent-breakpoints.api").toggle_breakpoint() end, desc = "Breakpoint: toggle (persistent)" },
+      { "<leader>dB", function() require("persistent-breakpoints.api").set_conditional_breakpoint() end, desc = "Breakpoint: conditional" },
+      { "<leader>dC", function() require("persistent-breakpoints.api").clear_all_breakpoints() end, desc = "Breakpoint: clear all" },
+    },
   },
 }
