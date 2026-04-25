@@ -58,7 +58,7 @@ return {
             desc = "Config",
             action = ":lua Snacks.dashboard.pick('files', { cwd = vim.fn.stdpath('config') })",
           },
-          { icon = " ", key = "p", desc = "Open Project", action = "<cmd>ProjectTelescope<cr>" },
+          { icon = " ", key = "p", desc = "Open Project", action = "<cmd>ProjectSnacks<cr>" },
           {
             icon = "󰒲 ",
             key = "L",
