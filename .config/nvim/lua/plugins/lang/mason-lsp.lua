@@ -2,9 +2,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      { "saghen/blink.cmp" },
-    },
     keys = {
       { "K", vim.lsp.buf.hover, desc = "LSP Hover" },
       { "gd", vim.lsp.buf.definition, desc = "Goto Definition" },
@@ -15,6 +12,9 @@ return {
     },
     config = function()
       local capabilities = require("blink.cmp").get_lsp_capabilities()
+      if package.loaded["blink.cmp"] then
+        capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
+      end
 
       vim.lsp.config("*", { capabilities = capabilities })
       vim.lsp.config("clangd", require("lsp.clangd"))

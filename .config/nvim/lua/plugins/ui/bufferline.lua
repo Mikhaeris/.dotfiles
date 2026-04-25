@@ -2,7 +2,18 @@ return {
   "akinsho/bufferline.nvim",
   version = "*",
   dependencies = "nvim-tree/nvim-web-devicons",
-  lazy = false,
+  init = function()
+    vim.api.nvim_create_autocmd("BufAdd", {
+      callback = function()
+        if #vim.fn.getbufinfo({ buflisted = 1 }) >= 2 then
+          vim.schedule(function()
+            require("lazy").load({ plugins = { "bufferline.nvim" } })
+          end)
+          return true
+        end
+      end,
+    })
+  end,
   opts = {
     options = {
       mode = "buffers",
