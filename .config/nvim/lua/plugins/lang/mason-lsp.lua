@@ -58,7 +58,7 @@ return {
   {
     "mason-org/mason-lspconfig.nvim",
     dependencies = { "mason-org/mason.nvim" },
-    event = "VeryLazy",
+    event = { "BufReadPre", "BufNewFile" },
     opts = {
       ensure_installed = {
         "lua_ls",
