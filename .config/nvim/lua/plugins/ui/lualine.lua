@@ -3,7 +3,7 @@ return {
   event = "VeryLazy",
   opts = {
     options = {
-      theme = "dracula",
+      theme = "auto",
     },
   },
 }
