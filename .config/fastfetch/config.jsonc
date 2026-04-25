@@ -1,119 +1,119 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "logo": {
-      "padding": {
-        "top": 3,
-        "left": 5
-      },
-      "color": {
-        "1": "38;2;255;255;255",
-        "2": "38;2;255;255;255"
+    "padding": {
+      "top": 3,
+      "left": 5
+    },
+    "color": {
+      "1": "38;2;255;255;255",
+      "2": "38;2;237;237;237"
     }
   },
   "display": {
-      "separator": " ➜  ",
-      "percent": {
-          "type": ["num","num-color"],
-          "color": {
-	      "green": "38;2;255;255;255",
-              "yellow": "38;2;255;255;255",
-              "red": "38;2;255;255;255"
-          }
+    "separator": " ➜  ",
+    "percent": {
+      "type": ["num", "num-color"],
+      "color": {
+        "green":  "38;2;237;237;237",
+        "yellow": "38;2;196;196;196",
+        "red":    "38;2;245;245;245"
       }
+    }
   },
   "modules": [
-      "break",
-      "break",
-      "break",
-      {
-          "type": "os",
-          "key": "OS   ",
-          "keyColor": "38;2;54;54;54",
-      },
-      {
-          "type": "kernel",
-          "key": " ├  ",
-          "keyColor": "38;2;54;54;54",
-      },
-      {
-          "type": "shell",
-          "key": " └  ",
-          "keyColor": "38;2;54;54;54", 
-      },
-      "break",
-      {
-          "type": "wm",
-          "key": "WM   ",
-          "keyColor": "38;2;89;89;89",
-      },
-      {
-          "type": "wmtheme",
-          "key": " ├ 󰉼 ",
-          "keyColor": "38;2;89;89;89",
-      },
-      {
-          "type": "icons",
-          "key": " ├ 󰀻 ",
-          "keyColor": "38;2;89;89;89",
-      },
-      {
-          "type": "cursor",
-          "key": " ├ 󰇀 ",
-          "keyColor": "38;2;89;89;89", 
-      },
-      {
-          "type": "terminal",
-          "key": " ├  ",
-          "keyColor": "38;2;89;89;89",
-      },
-      {
-          "type": "terminalfont",
-          "key": " └  ",
-          "keyColor": "38;2;89;89;89", 
-      },
-      "break",
-      {
-          "type": "host",
-          "format": "{5} {1} Type {2}",
-          "key": "PC   ",
-          "keyColor": "38;2;143;143;143",
-      },
-      {
-          "type": "cpu",
-          "key": " ├  ",
-          "keyColor": "38;2;143;143;143",
-      },
-      {
-          "type": "gpu",
-          "key": " ├ 󰢮 ",
-          "keyColor": "38;2;143;143;143",
-      },
-      {
-          "type": "memory",
-          "key": " ├  ",
-          "keyColor": "38;2;143;143;143",
-			"valueColor": "38;2;255;255;255",
-      },
-      {
-          "type": "swap",
-          "key": " ├ 󰓡 ",
-          "keyColor": "38;2;143;143;143",
-      },
-      {
-          "type": "disk",
-          "key": " ├ 󰋊 ",
-          "keyColor": "38;2;143;143;143",
-      },
-      {
-          "type": "display",
-          "key": " ├  ",
-          "keyColor": "38;2;143;143;143",
-      },
-      {
-          "type": "uptime",
-	  "key": " └  ",
-        "keyColor": "38;2;143;143;143"
-      },
-      "break",
+    "break",
+    "break",
+    "break",
+    {
+      "type": "os",
+      "key": "OS   ",
+      "keyColor": "38;2;90;90;90"
+    },
+    {
+      "type": "kernel",
+      "key": " ├  ",
+      "keyColor": "38;2;90;90;90"
+    },
+    {
+      "type": "shell",
+      "key": " └  ",
+      "keyColor": "38;2;90;90;90"
+    },
+    "break",
+    {
+      "type": "wm",
+      "key": "WM   ",
+      "keyColor": "38;2;112;112;112"
+    },
+    {
+      "type": "wmtheme",
+      "key": " ├ 󰉼 ",
+      "keyColor": "38;2;112;112;112"
+    },
+    {
+      "type": "icons",
+      "key": " ├ 󰀻 ",
+      "keyColor": "38;2;112;112;112"
+    },
+    {
+      "type": "cursor",
+      "key": " ├ 󰇀 ",
+      "keyColor": "38;2;112;112;112"
+    },
+    {
+      "type": "terminal",
+      "key": " ├  ",
+      "keyColor": "38;2;112;112;112"
+    },
+    {
+      "type": "terminalfont",
+      "key": " └  ",
+      "keyColor": "38;2;112;112;112"
+    },
+    "break",
+    {
+      "type": "host",
+      "format": "{5} {1} Type {2}",
+      "key": "PC   ",
+      "keyColor": "38;2;168;168;168"
+    },
+    {
+      "type": "cpu",
+      "key": " ├  ",
+      "keyColor": "38;2;168;168;168"
+    },
+    {
+      "type": "gpu",
+      "key": " ├ 󰢮 ",
+      "keyColor": "38;2;168;168;168"
+    },
+    {
+      "type": "memory",
+      "key": " ├  ",
+      "keyColor": "38;2;168;168;168",
+      "valueColor": "38;2;255;255;255"
+    },
+    {
+      "type": "swap",
+      "key": " ├ 󰓡 ",
+      "keyColor": "38;2;168;168;168"
+    },
+    {
+      "type": "disk",
+      "key": " ├ 󰋊 ",
+      "keyColor": "38;2;168;168;168"
+    },
+    {
+      "type": "display",
+      "key": " ├  ",
+      "keyColor": "38;2;168;168;168"
+    },
+    {
+      "type": "uptime",
+      "key": " └  ",
+      "keyColor": "38;2;168;168;168"
+    },
+    "break"
   ]
 }
