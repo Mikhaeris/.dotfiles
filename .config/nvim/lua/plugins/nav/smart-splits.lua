@@ -1,6 +1,6 @@
 return {
   "mrjones2014/smart-splits.nvim",
-  lazy = false,
+  -- lazy = false,
   -- build is optional, only for the "native" tmux integration via CLI
   -- build = "./kitty/install-kittens.bash", -- kitty only, skip
   opts = {
