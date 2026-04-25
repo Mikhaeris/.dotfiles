@@ -3,14 +3,12 @@ return {
   event = "InsertEnter",
   version = "*",
   dependencies = {
-    "rafamadriz/friendly-snippets",
+    "L3MON4D3/LuaSnip",
   },
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
-    snippets = {
-      preset = "default",
-    },
+    snippets = { preset = "luasnip" },
 
     keymap = {
       preset = "default",
@@ -32,6 +30,15 @@ return {
         auto_show = true,
         auto_show_delay_ms = 200,
       },
+      menu = {
+        draw = {
+          columns = {
+            { "label", "label_description", gap = 1 },
+            { "kind_icon", "kind", gap = 1 },
+          },
+        },
+      },
+      ghost_text = { enabled = true },
     },
   },
 }
