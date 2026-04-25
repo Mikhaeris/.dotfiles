@@ -11,6 +11,7 @@ return {
     dependencies = {
       "rcarriga/nvim-dap-ui",
       "theHamsta/nvim-dap-virtual-text",
+      "Weissle/persistent-breakpoints.nvim",
     },
     -- stylua: ignore
     keys = {
@@ -58,11 +59,11 @@ return {
       layouts = {
         {
           elements = {
-            { id = "threads", size = 0.1 },
-            { id = "watches", size = 0.2 },
-            { id = "stacks", size = 0.2 },
-            { id = "breakpoints", size = 0.1 },
-            { id = "scopes", size = 0.5 },
+            { id = "scopes", size = 0.40 },
+            { id = "breakpoints", size = 0.10 },
+            { id = "watches", size = 0.20 },
+            { id = "stacks", size = 0.20 },
+            { id = "threads", size = 0.10 },
           },
           size = 40,
           position = "left",
@@ -122,19 +123,27 @@ return {
   },
   {
     "Weissle/persistent-breakpoints.nvim",
-    event = "BufReadPost",
+    lazy = true,
     dependencies = { "mfussenegger/nvim-dap" },
+  -- stylua: ignore
+  keys = {
+    { "<leader>db", function() require("persistent-breakpoints.api").toggle_breakpoint() end, desc = "Breakpoint: toggle (persistent)" },
+    { "<leader>dB", function() require("persistent-breakpoints.api").set_conditional_breakpoint() end, desc = "Breakpoint: conditional" },
+    { "<leader>dC", function() require("persistent-breakpoints.api").clear_all_breakpoints() end, desc = "Breakpoint: clear all" },
+  },
     opts = {
       load_breakpoints_event = { "BufReadPost" },
-      -- where breakpoints are stored: stdpath("data")/breakpoints.json
       save_dir = vim.fn.stdpath("data") .. "/nvim_checkpoints",
       perf_record = false,
     },
-    -- stylua: ignore
-    keys = {
-      { "<leader>db", function() require("persistent-breakpoints.api").toggle_breakpoint() end, desc = "Breakpoint: toggle (persistent)" },
-      { "<leader>dB", function() require("persistent-breakpoints.api").set_conditional_breakpoint() end, desc = "Breakpoint: conditional" },
-      { "<leader>dC", function() require("persistent-breakpoints.api").clear_all_breakpoints() end, desc = "Breakpoint: clear all" },
-    },
+    config = function(_, opts)
+      require("persistent-breakpoints").setup(opts)
+      local api = require("persistent-breakpoints.api")
+      for _, b in ipairs(vim.api.nvim_list_bufs()) do
+        if vim.api.nvim_buf_is_loaded(b) and vim.bo[b].buflisted then
+          pcall(api.load_breakpoints, b)
+        end
+      end
+    end,
   },
 }

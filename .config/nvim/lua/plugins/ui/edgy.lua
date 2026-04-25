@@ -38,7 +38,7 @@ end
 
 return {
   "folke/edgy.nvim",
-  event = "VeryLazy",
+  -- event = "VeryLazy",
   dependencies = {
     "nvim-neo-tree/neo-tree.nvim",
     "hedyhli/outline.nvim",
@@ -63,6 +63,7 @@ return {
     wo = {
       winhighlight = "NormalNC:Normal,WinSeparator:WinSeparator",
     },
+    exit_when_last = false,
     bottom = {
       {
         ft = "toggleterm",
@@ -81,6 +82,10 @@ return {
         end,
       },
       { ft = "OverseerOutput", title = "Task Output", size = { height = 0.3 } },
+
+      -- DAP
+      { ft = "dap-repl", title = "DAP REPL", size = { height = 0.25 } },
+      { ft = "dapui_console", title = "DAP Console", size = { height = 0.25 } },
     },
     left = {
       {
@@ -97,6 +102,13 @@ return {
         pinned = true,
         open = "Outline",
       },
+
+      -- DAP UI
+      { title = "Threads", ft = "dapui_threads", pinned = true, open = "DapNew" },
+      { title = "Scopes", ft = "dapui_scopes" },
+      { title = "Breakpoints", ft = "dapui_breakpoints", pinned = true, open = "DapNew" },
+      { title = "Stacks", ft = "dapui_stacks", pinned = true, open = "DapNew" },
+      { title = "Watches", ft = "dapui_watches" },
     },
     right = {
       {
