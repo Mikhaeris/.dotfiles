@@ -29,6 +29,7 @@ return {
         "stylua",
         "html",
         "cssls",
+        "emmet_language_server",
       })
 
       vim.opt.signcolumn = "no"
@@ -72,6 +73,7 @@ return {
         "stylua",
         "html",
         "cssls",
+        "emmet_language_server",
       },
       automatic_installation = false,
     },
