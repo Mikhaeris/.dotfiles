@@ -104,10 +104,10 @@ return {
       },
 
       -- DAP UI
-      { title = "Threads", ft = "dapui_threads", pinned = true, open = "DapNew" },
+      { title = "Threads", ft = "dapui_threads", pinned = false, open = "DapNew" },
       { title = "Scopes", ft = "dapui_scopes" },
-      { title = "Breakpoints", ft = "dapui_breakpoints", pinned = true, open = "DapNew" },
-      { title = "Stacks", ft = "dapui_stacks", pinned = true, open = "DapNew" },
+      { title = "Breakpoints", ft = "dapui_breakpoints", pinned = false, open = "DapNew" },
+      { title = "Stacks", ft = "dapui_stacks", pinned = false, open = "DapNew" },
       { title = "Watches", ft = "dapui_watches" },
     },
     right = {
