@@ -16,38 +16,38 @@ return {
         booleans       = "bold",
       },
       colors = {
-        bg          = "#131313",
-        fg          = "#cfcfcf",
-        floatBorder = "#3a3a3a",
-        line        = "#1f1f1f",
+        bg          = "#0c0c0c",
+        fg          = "#ededed",
+        floatBorder = "#4a4a4a",
+        line        = "#1a1a1a",
 
-        comment     = "#5e5e64",
-        visual      = "#262629",
-        search      = "#33333a",
+        comment     = "#707070",
+        visual      = "#2e2e2e",
+        search      = "#454545",
 
-        keyword     = "#b0a8b8",
-        builtin     = "#b4a8ae",
+        keyword     = "#ffffff",
+        builtin     = "#dcdcdc",
 
-        func        = "#a8b4c0",
+        func        = "#cfcfcf",
 
-        type        = "#a0b4b0",
+        type        = "#bdbdbd",
 
-        string      = "#a8b0a0",
+        string      = "#a8a8a8",
 
-        number      = "#bcb0a4",
-        constant    = "#bcb0a4",
+        number      = "#c8c8c8",
+        constant    = "#c8c8c8",
 
-        property    = "#c0c0c4",
-        parameter   = "#bcbcb8",
-        operator    = "#9c9ca0",
+        property    = "#e4e4e4",
+        parameter   = "#b8b8b8",
+        operator    = "#8a8a8a",
 
-        error       = "#c07878",
-        warning     = "#b89868",
-        hint        = "#8898a4",
-        info        = "#98a8b4",
+        error       = "#f5f5f5",
+        warning     = "#c4c4c4",
+        hint        = "#7a7a7a",
+        info        = "#9c9c9c",
 
-        plus        = "#88a088",
-        delta       = "#b89868",
+        plus        = "#b8b8b8",
+        delta       = "#8a8a8a",
       },
     })
     vim.cmd.colorscheme("vague")
