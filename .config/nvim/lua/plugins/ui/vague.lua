@@ -6,59 +6,49 @@ return {
     require("vague").setup({
       transparent = false,
       style = {
-        comments       = "italic",
-        keywords       = "bold",
-        functions      = "none",
-        strings        = "none",
-        variables      = "none",
-        types          = "italic",
+        comments      = "italic",
+        keywords      = "bold",
+        functions     = "none",
+        strings       = "none",
+        variables     = "none",
+        types         = "italic",
         keyword_return = "italic",
-        booleans       = "bold",
+        booleans      = "bold",
       },
       colors = {
-        -- база
         bg          = "#131313",
-        fg          = "#cfcfcf",
+        fg          = "#d4d4d4",
         floatBorder = "#3a3a3a",
         line        = "#1f1f1f",
 
-        -- UI
-        comment     = "#5e5e64",  -- тусклый, уходит назад
-        visual      = "#262629",
-        search      = "#33333a",
+        comment     = "#6b6b78",
+        visual      = "#2a2a32",
+        search      = "#3a3a48",
 
-        -- keyword — холодный серо-фиолетовый, едва уловимый
-        keyword     = "#b0a8b8",
-        -- builtin — чуть теплее keyword, но тоже почти серый
-        builtin     = "#b4a8ae",
+        keyword     = "#b8a4d4",
+        builtin     = "#c89cb8",
 
-        -- функции — холодный стальной серый с намёком на голубой
-        func        = "#a8b4c0",
+        func        = "#9cc0e0",
 
-        -- типы — серый с лёгким teal
-        type        = "#a0b4b0",
+        type        = "#86c5c0",
 
-        -- строки — серый с лёгкой зеленцой (sage, очень приглушённый)
-        string      = "#a8b0a0",
+        string      = "#b5c098",
 
-        -- числа — серый с лёгкой тёплой ноткой
-        number      = "#bcb0a4",
-        constant    = "#bcb0a4",
+        number      = "#e0b090",
+        constant    = "#e0b090",
 
-        -- нейтральные
-        property    = "#c0c0c4",
-        parameter   = "#bcbcb8",
-        operator    = "#9c9ca0",
+        property    = "#c8c8d0",
+        parameter   = "#d4cfb8",
 
-        -- диагностика — оставляем чуть ярче, это сигналы
-        error       = "#c07878",
-        warning     = "#b89868",
-        hint        = "#8898a4",
-        info        = "#98a8b4",
+        operator    = "#a8a8b0",
 
-        -- git
-        plus        = "#88a088",
-        delta       = "#b89868",
+        error       = "#d47878",
+        warning     = "#d4a060",
+        hint        = "#86b0c8",
+        info        = "#9cc0e0",
+
+        plus        = "#88b090",
+        delta       = "#d4a060",
       },
     })
     vim.cmd.colorscheme("vague")
