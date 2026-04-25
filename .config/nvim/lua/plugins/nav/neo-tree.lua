@@ -7,10 +7,7 @@ return {
     "nvim-tree/nvim-web-devicons",
   },
   opts = {
-    window = {
-      width = 30,
-      position = "left",
-    },
+    window = { width = 30, position = "left" },
     filesystem = {
       filtered_items = {
         visible = true,
@@ -26,9 +23,9 @@ return {
       },
     },
   },
-  keys = {
-    { "<C-n>", ":Neotree toggle<CR>" },
-  },
+  -- keys = {
+  --   { "<C-n>", ":Neotree toggle<CR>" },
+  -- },
   config = function(_, opts)
     require("neo-tree").setup(opts)
 

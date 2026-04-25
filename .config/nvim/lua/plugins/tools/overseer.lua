@@ -34,12 +34,12 @@ return {
     output = {
       use_terminal = false,
     },
-    task_list = {
-      direction = "left",
-      open_cmd = "vsplit",
-      width = 20,
-      show_detail = false,
-    },
+    -- task_list = {
+    --   direction = "left",
+    --   open_cmd = "vsplit",
+    --   width = 20,
+    --   show_detail = false,
+    -- },
   },
   config = function(_, opts)
     local overseer = require("overseer")
