@@ -30,19 +30,27 @@ return {
         enabled = true,
         virtual_text = {
           errors = { "italic" },
-          hints  = { "italic" },
+          hints = { "italic" },
           warnings = { "italic" },
           information = { "italic" },
         },
         underlines = {
           errors = { "underline" },
-          hints  = { "underline" },
+          hints = { "underline" },
           warnings = { "underline" },
           information = { "underline" },
         },
         inlay_hints = { background = true },
       },
     },
+    custom_highlights = function(colors)
+      return {
+        NeoTreeNormal = { bg = colors.base },
+        NeoTreeNormalNC = { bg = colors.base },
+        NeoTreeEndOfBuffer = { bg = colors.base },
+        NeoTreeWinSeparator = { fg = colors.base, bg = colors.base },
+      }
+    end,
   },
   config = function(_, opts)
     require("catppuccin").setup(opts)
