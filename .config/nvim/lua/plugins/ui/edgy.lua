@@ -60,6 +60,9 @@ return {
     { "<leader>uO", "<cmd>OverseerToggle<cr>",                       desc = "Toggle Overseer" },
   },
   opts = {
+    wo = {
+      winhighlight = "NormalNC:Normal,WinSeparator:WinSeparator",
+    },
     bottom = {
       {
         ft = "toggleterm",
