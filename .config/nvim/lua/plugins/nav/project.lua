@@ -22,6 +22,14 @@ return {
       end,
       desc = "Projects: load session here",
     },
+    {
+      "<leader>pa",
+      function()
+        require("project")._session_active = true
+        vim.cmd("ProjectAdd!")
+      end,
+      desc = "Projects: add current cwd",
+    },
   },
   opts = {
     detection_methods = {
