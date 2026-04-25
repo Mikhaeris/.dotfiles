@@ -6,8 +6,8 @@ return {
   opts = {
     options = {
       mode = "buffers",
-      separator_style = "thin",
-      indicator = { style = "underline" },
+      -- separator_style = "thin",
+      -- indicator = { style = "underline" },
       diagnostics = "nvim_lsp",
 
       offsets = {
