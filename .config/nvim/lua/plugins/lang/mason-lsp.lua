@@ -11,12 +11,9 @@ return {
       { "<leader>cr", vim.lsp.buf.rename, desc = "Rename" },
     },
     config = function()
-      local capabilities = require("blink.cmp").get_lsp_capabilities()
-      if package.loaded["blink.cmp"] then
-        capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
-      end
-
-      vim.lsp.config("*", { capabilities = capabilities })
+      vim.lsp.config("*", {
+        capabilities = vim.lsp.protocol.make_client_capabilities(),
+      })
       vim.lsp.config("clangd", require("lsp.clangd"))
 
       vim.lsp.enable({
@@ -60,8 +57,8 @@ return {
   },
   {
     "mason-org/mason-lspconfig.nvim",
-    event = "VeryLazy",
     dependencies = { "mason-org/mason.nvim" },
+    event = "VeryLazy",
     opts = {
       ensure_installed = {
         "lua_ls",

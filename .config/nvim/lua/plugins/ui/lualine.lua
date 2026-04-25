@@ -1,6 +1,6 @@
 return {
   "nvim-lualine/lualine.nvim",
-  event = "VeryLazy",
+  event = "VimEnter",
   config = function()
     local function build()
       local on_vague = vim.g.colors_name == "vague"
