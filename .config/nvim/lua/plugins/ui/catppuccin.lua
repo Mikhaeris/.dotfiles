@@ -25,7 +25,7 @@ return {
       semantic_tokens = true,
       lsp_trouble = true,
       illuminate = { enabled = true, lsp = true },
-      snacks = { enabled = true, indent_scope_color = "lavender" },
+      -- snacks = { enabled = true, indent_scope_color = "lavender" },
       native_lsp = {
         enabled = true,
         virtual_text = {
