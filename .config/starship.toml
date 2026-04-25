@@ -37,7 +37,33 @@ $line_break\
 $character\
 """
 
-palette = 'default'
+palette = 'vague'
+
+[palettes.vague]
+
+color_ok       = '#ededed'
+color_danger   = '#f5f5f5'
+color_caution  = '#c4c4c4'
+
+color_os         = '#ffffff'
+color_directory  = '#e4e4e4'
+color_git        = '#a8a8a8'
+color_git_added  = '#b8b8b8'
+color_git_deleted = '#8a8a8a'
+color_env        = '#bdbdbd'
+color_kubernetes = '#a8a8a8'
+color_docker     = '#bdbdbd'
+color_shell      = '#a8a8a8'
+color_container  = '#a8a8a8'
+color_other      = '#707070'
+color_time       = '#707070'
+color_duration   = '#707070'
+
+color_vimcmd_ok      = '#ededed'
+color_vimcmd_replace = '#bdbdbd'
+color_vimcmd_visual  = '#c8c8c8'
+
+current_line = '#1a1a1a'
 
 [palettes.default]
 
@@ -122,7 +148,7 @@ style = "fg:color_directory"
 read_only_style = "fg:color_directory"
 repo_root_style = "bold fg:color_directory"
 format = "[ $path ]($style)"
-read_only = " "
+read_only = " "
 home_symbol = "~"
 truncation_symbol = "…/"
 truncation_length = 0
@@ -131,7 +157,7 @@ fish_style_pwd_dir_length = 0
 use_logical_path = true
 
 [git_branch]
-symbol = ""
+symbol = ""
 style = "fg:color_git"
 format = '( [$symbol $branch]($style) )'
 only_attached = true
@@ -187,12 +213,12 @@ am_or_rebase = "AM/REBASE"
 disabled = false
 
 [nodejs]
-symbol = ""
+symbol = ""
 style = "fg:color_env"
 format = '( [$symbol( $version)]($style) )'
 
 [c]
-symbol = ""
+symbol = ""
 style = "fg:color_env"
 format = '( [$symbol( $version)]($style) )'
 
@@ -207,27 +233,27 @@ style = "fg:color_env"
 format = '( [$symbol( $version)]($style) )'
 
 [php]
-symbol = ""
+symbol = ""
 style = "fg:color_env"
 format = '( [$symbol( $version)]($style) )'
 
 [java]
-symbol = ""
+symbol = ""
 style = "fg:color_env"
 format = '( [$symbol( $version)]($style) )'
 
 [kotlin]
-symbol = ""
+symbol = ""
 style = "fg:color_env"
 format = '( [$symbol( $version)]($style) )'
 
 [haskell]
-symbol = ""
+symbol = ""
 style = "fg:color_env"
 format = '( [$symbol( $version)]($style) )'
 
 [python]
-symbol = ""
+symbol = ""
 style = "fg:color_env"
 format = '( [$symbol( $version)( $virtualenv)]($style) )'
 version_format = '${raw}'
@@ -239,7 +265,7 @@ style = "fg:color_env"
 format = '( [$symbol( $version)]($style) )'
 
 [docker_context]
-symbol = ""
+symbol = ""
 style = "fg:color_docker"
 format = '( [$symbol( $context)]($style) )'
 
