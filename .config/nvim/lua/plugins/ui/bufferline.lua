@@ -25,6 +25,10 @@ return {
         },
       },
     },
+    highlights = function()
+      local normal_bg = vim.api.nvim_get_hl(0, { name = "Normal" }).bg
+      vim.api.nvim_set_hl(0, "BufferLineFill", { bg = normal_bg })
+    end,
   },
   keys = {
     { "<Tab>", "<cmd>BufferLineCycleNext<CR>", mode = "n", silent = true },
