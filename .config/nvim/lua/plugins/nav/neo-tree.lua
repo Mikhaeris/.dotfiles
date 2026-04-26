@@ -24,18 +24,4 @@ return {
       },
     },
   },
-  config = function(_, opts)
-    require("neo-tree").setup(opts)
-
-    vim.api.nvim_create_autocmd("VimEnter", {
-      callback = function(data)
-        if data.file == "" and vim.bo[data.buf].buftype == "" then
-          require("neo-tree.command").execute({
-            toggle = true,
-            dir = vim.loop.cwd(),
-          })
-        end
-      end,
-    })
-  end,
 }
