@@ -17,7 +17,6 @@ require("lazy").setup(require("plugins"), {
 				"vimballPlugin",
 				"2html_plugin",
 				"logiPat",
-				"matchit",
 				"netrw",
 				"netrwPlugin",
 				"netrwSettings",
