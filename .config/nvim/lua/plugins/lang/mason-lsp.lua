@@ -19,7 +19,7 @@ return {
       vim.lsp.enable({
         "lua_ls",
         "clangd",
-        "jdtls",
+        -- skip "jdtls",
         "asm_lsp",
         "texlab",
         "pyright",
@@ -73,6 +73,9 @@ return {
         "emmet_language_server",
       },
       automatic_installation = true,
+      automatic_enable = {
+        exclude = { "jdtls" },
+      },
     },
   },
 }

@@ -57,6 +57,7 @@ return {
       { "<leader>x", group = "diagnostics" },
 
       { "<leader>tp", group = "preset" },
+      { "<leader>cj", group = "java" },
       { "<leader><leader>", group = "swap splits" },
 
       { "<leader>?", desc = "Buffer keymaps help" },
