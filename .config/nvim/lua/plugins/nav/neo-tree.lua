@@ -24,9 +24,6 @@ return {
       },
     },
   },
-  -- keys = {
-  --   { "<C-n>", ":Neotree toggle<CR>" },
-  -- },
   config = function(_, opts)
     require("neo-tree").setup(opts)
 
