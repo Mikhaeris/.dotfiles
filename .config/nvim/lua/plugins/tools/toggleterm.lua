@@ -66,9 +66,9 @@ end
 
 local presets = {
   { key = "g", label = "lazygit", cmd = "lazygit", direction = "float" },
-  { key = "b", label = "btop",    cmd = "btop",    direction = "float" },
-  { key = "p", label = "python",  cmd = "python3", direction = "horizontal", size = 14 },
-  { key = "n", label = "node",    cmd = "node",    direction = "horizontal", size = 14 },
+  { key = "b", label = "btop", cmd = "btop", direction = "float" },
+  { key = "p", label = "python", cmd = "python3", direction = "horizontal", size = 14 },
+  { key = "n", label = "node", cmd = "node", direction = "horizontal", size = 14 },
 }
 
 local function open_preset(i)
@@ -123,10 +123,9 @@ end
 return {
   "akinsho/toggleterm.nvim",
   version = "*",
-
   keys = function()
     local keys = {
-      { "<leader>tf", open_float, mode = { "n", "t" }, desc = "Float terminal" },
+      { "<leader>tf", open_float, desc = "Float terminal" },
       {
         "<leader>tn",
         function()
@@ -135,19 +134,31 @@ return {
             open_hterm(id)
           end
         end,
-        mode = { "n", "t" },
         desc = "New terminal",
       },
-      { "<leader>th", function() cycle_hterm(-1) end, mode = { "n", "t" }, desc = "Prev terminal" },
-      { "<leader>tl", function() cycle_hterm(1) end,  mode = { "n", "t" }, desc = "Next terminal" },
-      { "<leader>tt", pick_terminal, mode = { "n", "t" }, desc = "Terminal picker" },
+      {
+        "<leader>th",
+        function()
+          cycle_hterm(-1)
+        end,
+        desc = "Prev terminal",
+      },
+      {
+        "<leader>tl",
+        function()
+          cycle_hterm(1)
+        end,
+        desc = "Next terminal",
+      },
+      { "<leader>tt", pick_terminal, desc = "Terminal picker" },
     }
 
     for i = 1, 5 do
       keys[#keys + 1] = {
         "<leader>t" .. i,
-        function() open_hterm(i) end,
-        mode = { "n", "t" },
+        function()
+          open_hterm(i)
+        end,
         desc = "Terminal #" .. i,
       }
     end
@@ -155,15 +166,15 @@ return {
     for i, p in ipairs(presets) do
       keys[#keys + 1] = {
         "<leader>tp" .. p.key,
-        function() open_preset(i) end,
-        mode = { "n", "t" },
+        function()
+          open_preset(i)
+        end,
         desc = "Preset: " .. p.label,
       }
     end
 
     return keys
   end,
-
   opts = {
     size = function(term)
       if term.direction == "horizontal" then
