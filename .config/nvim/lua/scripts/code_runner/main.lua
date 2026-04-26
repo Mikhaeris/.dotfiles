@@ -1,6 +1,7 @@
 local builder = require("scripts.code_runner.builder")
 local detector = require("scripts.code_runner.detector")
 local script_runner = require("scripts.code_runner.script_runner")
+local single_file = require("scripts.code_runner.single_file")
 local ui = require("scripts.code_runner.ui")
 
 local M = {}
@@ -27,17 +28,22 @@ function M.run(mode, ask_args)
 
   -- 2) Detect/find build system
   local build_cmd = detector.get_build_command()
-  if not build_cmd then
-    vim.notify("Build system not found!", vim.log.levels.ERROR)
-    return
-  end
 
   -- 3) Make paths
   local build_dir = vim.fn.getcwd() .. "/build/" .. mode
   local exe = build_dir .. "/main"
 
-  -- 4) Build
-  local success, errors = builder.compile(build_cmd, mode, build_dir)
+  -- 4) Build with fallback
+  local success, errors
+  if build_cmd then
+    success, errors = builder.compile(build_cmd, mode, build_dir)
+  elseif single_file.can_compile() then
+    vim.notify("No build system found, compiling current buffer...", vim.log.levels.INFO)
+    success, errors = single_file.compile(mode, build_dir)
+  else
+    vim.notify("Build system not found and no single-file compiler for: " .. vim.bo.filetype, vim.log.levels.ERROR)
+    return
+  end
 
   -- 5) Check for error build
   if not success then
