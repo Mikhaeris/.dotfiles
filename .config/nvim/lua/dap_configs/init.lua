@@ -4,7 +4,6 @@ local ft_to_module = {
   c          = "dap_configs.c",
   cpp        = "dap_configs.cpp",
   asm        = "dap_configs.assembler",
-  assembler  = "dap_configs.assembler",
   nasm       = "dap_configs.assembler",
   pascal     = "dap_configs.pascal",
   python     = "dap_configs.python",
