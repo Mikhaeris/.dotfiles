@@ -11,6 +11,7 @@ local indent_map = {
   cpp        = 4,
   pascal     = 4,
   html       = 4,
+  java       = 4,
 }
 
 vim.api.nvim_create_autocmd("FileType", {

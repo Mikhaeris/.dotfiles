@@ -7,11 +7,17 @@ return {
     default_format_opts = {
       lsp_format = "fallback",
     },
+    formatters = {
+      ["google-java-format"] = {
+        prepend_args = { "--aosp" },
+      },
+    },
     formatters_by_ft = {
       lua = { "stylua" },
       c = { "clang_format" },
       cpp = { "clang_format" },
       tex = { "latexindent" },
+      java = { "google-java-format" },
     },
   },
 }
