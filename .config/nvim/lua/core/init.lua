@@ -1,4 +1,3 @@
-require("core.theme")
 require("core.lazy")
 require("core.options")
 require("core.keybinds")

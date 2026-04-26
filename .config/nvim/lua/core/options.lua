@@ -23,23 +23,26 @@ vim.opt.clipboard = "unnamedplus"
 
 vim.opt.fillchars:append({ eob = " " })
 
--- Персистентный undo
+-- Persistent undo
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.stdpath("data") .. "/undo"
 
--- Поиск
+-- Search
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-vim.opt.inccommand = "split"  -- live preview для :s
+vim.opt.inccommand = "split"  -- live preview for :s
 
--- Окна/сплиты
+-- Windows/Split Systems
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
--- Скролл
+-- Scroll
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 
--- Производительность
+-- Performance
 vim.opt.updatetime = 250
 vim.opt.timeoutlen = 400
+
+-- "vague" | "catppuccin"
+vim.g.my_theme = vim.g.my_theme or "catppuccin"

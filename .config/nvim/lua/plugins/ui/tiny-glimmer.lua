@@ -34,17 +34,4 @@ return {
       },
     },
   },
-  config = function(_, opts)
-    local glimmer = require("tiny-glimmer")
-    glimmer.setup(opts)
-
-    vim.api.nvim_create_autocmd("ColorScheme", {
-      group = vim.api.nvim_create_augroup("my_tiny_glimmer_refresh", { clear = true }),
-      callback = function()
-        vim.schedule(function()
-          glimmer.setup(opts)
-        end)
-      end,
-    })
-  end,
 }

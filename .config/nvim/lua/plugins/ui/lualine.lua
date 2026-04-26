@@ -74,14 +74,5 @@ return {
     end
 
     require("lualine").setup(build())
-
-    vim.api.nvim_create_autocmd("ColorScheme", {
-      group = vim.api.nvim_create_augroup("my_lualine_refresh", { clear = true }),
-      callback = function()
-        vim.schedule(function()
-          require("lualine").setup(build())
-        end)
-      end,
-    })
   end,
 }

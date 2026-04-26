@@ -26,12 +26,5 @@ return {
     end
 
     apply()
-
-    vim.api.nvim_create_autocmd("ColorScheme", {
-      group = vim.api.nvim_create_augroup("my_devicons_refresh", { clear = true }),
-      callback = function()
-        vim.schedule(apply)
-      end,
-    })
   end,
 }
