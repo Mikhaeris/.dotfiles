@@ -55,7 +55,7 @@ return {
     { "<leader>uw", function() require("edgy").select() end, desc = "Edgy pick window" },
 
     -- per-panel toggles
-    { "<leader>un", "<cmd>Neotree toggle<cr>",                       desc = "Toggle Neo-tree" },
+    { "<leader>ut", "<cmd>Neotree toggle<cr>",                       desc = "Toggle Neo-tree" },
     { "<leader>uo", "<cmd>Outline<cr>",                              desc = "Toggle Outline" },
     { "<leader>uO", "<cmd>OverseerToggle<cr>",                       desc = "Toggle Overseer" },
   },
