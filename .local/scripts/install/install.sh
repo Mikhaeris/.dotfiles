@@ -1,108 +1,85 @@
 #!/usr/bin/env bash
+# Usage
+#   ./install.sh              # install all
+#   ./install.sh 40-terminal  # install one module
+#   ./install.sh --list       # show list of modules
 
 set -euo pipefail
 
-packages=(
-  base
-  base-devel
-  bibata-cursor-theme-bin
-  brillo
-  dnsmasq
-  efibootmgr
-  fastfetch
-  fd
-  fzf
-  gdb
-  git
-  grim
-  grub
-  gnome-themes-extra
-  gtk2
-  gtk-layer-shell
-  hyprland
-  hyprlock
-  hyprpaper
-  imagemagick
-  ipset
-  jq
-  kitty
-  lazygit
-  libdbusmenu-gtk3
-  linux
-  linux-firmware
-  linux-headers
-  matugen-bin
-  neovim
-  network-manager-applet
-  networkmanager
-  noto-fonts
-  noto-fonts-emoji
-  nwg-look
-  openssh
-  pamixer
-  papirus-icon-theme
-  paru
-  paru-debug
-  pavucontrol
-  pipewire
-  pipewire-alsa
-  pipewire-pulse
-  playerctl
-  poppler
-  power-profiles-daemon
-  python-gobject
-  python-pywalfox
-  qbittorrent
-  qt5-wayland
-  qt5ct
-  qt6ct
-  resvg
-  ripgrep
-  rofi-wayland
-  sddm
-  slurp
-  socat
-  starship
-  stow
-  tmux
-  otf-font-awesome
-  ttf-fira-sans
-  ttf-fira-code
-  ttf-firacode-nerd
-  ttf-dejavu
-  noto-fonts-cjk
-  noto-fonts-extra
-  ttf-jetbrains-mono-nerd
-  ttf-liberation
-  udiskie
-  unzip
-  watchexec
-  wayland-protocols
-  wayland-utils
-  wireplumber
-  wl-clipboard
-  xdg-desktop-portal-gtk
-  xdg-desktop-portal-hyprland
-  yazi
-  zoxide
-  zsh
-)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=common.sh
+source "$SCRIPT_DIR/common.sh"
 
-to_pacman=()
-to_paru=()
+MODULES_DIR="$SCRIPT_DIR/modules"
 
-for pkg in "${packages[@]}"; do
-  pacman -Qi -- "$pkg" &>/dev/null && continue
+list_modules() {
+    info "Available modules:"
+    for f in "$MODULES_DIR"/*.sh; do
+        [[ -f $f ]] || continue
+        echo "  - $(basename "$f" .sh)"
+    done
+}
 
-  if pacman -Si -- "$pkg" &>/dev/null; then
-    to_pacman+=("$pkg")
-  elif paru -Si -- "$pkg" &>/dev/null; then
-    to_paru+=("$pkg")
-  else
-    printf 'skip: %s (not found)\n' "$pkg" >&2
-  fi
-done
+run_module() {
+    local module_path="$1"
+    local module_name
+    module_name="$(basename "$module_path" .sh)"
 
-pacman -Syu --noconfirm --needed -- "${to_pacman[@]}"
+    section "▶ Module: $module_name"
+    if bash "$module_path"; then
+        ok "Module '$module_name' completed"
+    else
+        err "Module '$module_name' failed"
+        return 1
+    fi
+}
 
-(( ${#to_paru[@]} )) && paru --needed --noconfirm -- "${to_paru[@]}"
+case "${1:-}" in
+    --list|-l)
+        list_modules
+        exit 0
+        ;;
+    -h|--help)
+        cat <<EOF
+install.sh — system installation from dotfiles
+
+Usage:
+  $0                  install everything (all modules in order)
+  $0 <module>         install a single module (e.g.: 40-terminal)
+  $0 --list           show list of modules
+  $0 --help           this help
+EOF
+        exit 0
+        ;;
+esac
+
+if [[ $EUID -eq 0 ]]; then
+    err "Do not run the script as root. sudo is used internally when needed."
+    exit 1
+fi
+
+if ! command -v pacman >/dev/null 2>&1; then
+    err "pacman not found. This script is intended only for Arch Linux and derivatives."
+    exit 1
+fi
+
+case "${1:-}" in
+    "")
+        section "Starting full installation"
+        for module in "$MODULES_DIR"/*.sh; do
+            [[ -f $module ]] || continue
+            run_module "$module"
+        done
+        section "✔ Installation completed"
+        info "Reboot or re-login to apply all changes."
+        ;;
+    *)
+        target="$MODULES_DIR/${1}.sh"
+        if [[ ! -f $target ]]; then
+            err "Module '$1' not found."
+            list_modules
+            exit 1
+        fi
+        run_module "$target"
+        ;;
+esac
