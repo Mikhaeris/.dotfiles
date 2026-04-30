@@ -2,6 +2,7 @@
 local indent_group = vim.api.nvim_create_augroup("FileTypeTabs", { clear = true })
 
 local indent_map = {
+  sh         = 4,
   lua        = 2,
   zsh        = 2,
   css        = 2,
