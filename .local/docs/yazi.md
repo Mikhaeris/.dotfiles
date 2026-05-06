@@ -14,12 +14,6 @@ open_mode=suggested
 save_mode=last
 ```
 
-off hyprland.portal:
-```
-sudo mv /usr/share/xdg-desktop-portal/portals/hyprland.portal \
-        /usr/share/xdg-desktop-portal/portals/hyprland.portal.bak
-```
-
 restart:
 ```
 systemctl --user restart xdg-desktop-portal.service
