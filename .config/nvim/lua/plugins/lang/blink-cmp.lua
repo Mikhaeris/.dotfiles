@@ -21,6 +21,11 @@ return {
 
     sources = {
       default = { "lsp", "path", "snippets", "buffer" },
+      providers = {
+        lsp = {
+          should_show_items = true,
+        },
+      },
     },
 
     signature = { enabled = true },
@@ -44,8 +49,13 @@ return {
   config = function(_, opts)
     require("blink.cmp").setup(opts)
 
-    vim.lsp.config("*", {
-      capabilities = require("blink.cmp").get_lsp_capabilities(),
+    vim.api.nvim_create_autocmd("TextChangedI", {
+      callback = function()
+        local cmp = require("blink.cmp")
+        if not cmp.is_visible() then
+          cmp.show()
+        end
+      end,
     })
   end,
 }

@@ -2,6 +2,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
+    dependencies = { "saghen/blink.cmp" },
     keys = {
       { "K", vim.lsp.buf.hover, desc = "LSP Hover" },
       { "gd", vim.lsp.buf.definition, desc = "Goto Definition" },
@@ -12,9 +13,14 @@ return {
     },
     config = function()
       vim.lsp.config("*", {
-        capabilities = vim.lsp.protocol.make_client_capabilities(),
+        capabilities = require("blink.cmp").get_lsp_capabilities(),
       })
       vim.lsp.config("clangd", require("lsp.clangd"))
+      vim.lsp.config("html", {
+        on_attach = function(client)
+          client.server_capabilities.completionProvider = nil
+        end,
+      })
 
       vim.lsp.enable({
         "lua_ls",
@@ -23,7 +29,6 @@ return {
         "asm_lsp",
         "texlab",
         "pyright",
-        "stylua",
         "html",
         "cssls",
         "emmet_language_server",
@@ -67,7 +72,6 @@ return {
         "asm_lsp",
         "texlab",
         "pyright",
-        "stylua",
         "html",
         "cssls",
         "emmet_language_server",

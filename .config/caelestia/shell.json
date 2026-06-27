@@ -6,17 +6,6 @@
             }
         },
         "deformScale": 0,
-        "font": {
-            "family": {
-                "clock": "Rubik",
-                "material": "Material Symbols Rounded",
-                "mono": "JetBrainsMono NF",
-                "sans": "Carlito"
-            },
-            "size": {
-                "scale": 1
-            }
-        },
         "padding": {
             "scale": 0.9645917338709677
         },
@@ -224,25 +213,7 @@
             ]
         },
         "idle": {
-            "inhibitWhenAudio": true,
-            "lockBeforeSleep": true,
             "timeouts": [
-                {
-                    "idleAction": "lock",
-                    "timeout": 1800
-                },
-                {
-                    "idleAction": "dpms off",
-                    "returnAction": "dpms on",
-                    "timeout": 3000
-                },
-                {
-                    "idleAction": [
-                        "systemctl",
-                        "suspend-then-hibernate"
-                    ],
-                    "timeout": 6000
-                }
             ]
         },
         "logo": ""
@@ -415,7 +386,6 @@
         "favouriteApps": [
         ],
         "hiddenApps": [
-            "nm-connection-editor",
             "bssh",
             "bvnc",
             "avahi-discover",
@@ -477,7 +447,6 @@
                 "to": "YT Music"
             }
         ],
-        "showLyrics": false,
         "smartScheme": true,
         "useFahrenheit": false,
         "useFahrenheitPerformance": false,
